@@ -55,7 +55,7 @@ Failures:
      [36m# ./lib/gotsha/actions/init.rb:17:in 'Gotsha::Actions::Init#call'[0m
      [36m# ./spec/gotsha/actions/init_spec.rb:29:in 'block (4 levels) in <top (required)>'[0m
 
-Finished in 0.01127 seconds (files took 0.05803 seconds to load)
+Finished in 0.01493 seconds (files took 0.07579 seconds to load)
 [31m10 examples, 1 failure[0m
 
 Failed examples:
