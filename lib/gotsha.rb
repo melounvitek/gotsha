@@ -10,6 +10,7 @@ require_relative "gotsha/actions/verify"
 require_relative "gotsha/bash_command"
 require_relative "gotsha/config"
 require_relative "gotsha/errors"
+require_relative "gotsha/user_config"
 require_relative "gotsha/version"
 
 module Gotsha
