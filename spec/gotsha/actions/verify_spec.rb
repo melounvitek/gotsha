@@ -44,7 +44,7 @@ RSpec.describe Gotsha::Actions::Verify do
       end
     end
 
-    context "when tests did not run" do
+    context "when tests did not run (note with Git error message)" do
       before do
         expect(Gotsha::BashCommand)
           .to receive(:run!)
@@ -55,6 +55,26 @@ RSpec.describe Gotsha::Actions::Verify do
           .to receive(:run!)
           .with("git --no-pager notes --ref=gotsha show #{last_sha}")
           .and_return(double("bash_response", text_output: "error: no note found for object"))
+      end
+
+      it "raises HardFail error" do
+        expect do
+          described_class.new.call
+        end.to raise_error(Gotsha::Errors::HardFail, "not verified yet")
+      end
+    end
+
+    context "when tests did not run (empty note)" do
+      before do
+        expect(Gotsha::BashCommand)
+          .to receive(:run!)
+          .with("git --no-pager rev-parse HEAD")
+          .and_return(double("bash_response", text_output: last_sha))
+
+        expect(Gotsha::BashCommand)
+          .to receive(:run!)
+          .with("git --no-pager notes --ref=gotsha show #{last_sha}")
+          .and_return(double("bash_response", text_output: ""))
       end
 
       it "raises HardFail error" do
