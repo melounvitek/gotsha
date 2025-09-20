@@ -18,13 +18,11 @@ jobs:
       - name: Show tests output
         run: |
           SHA="${{ github.event.pull_request.head.sha }}"
-          echo "::group::Gotsha test output"
           if git --no-pager notes --ref=gotsha show "$SHA" >/dev/null 2>&1; then
             git --no-pager notes --ref=gotsha show "$SHA"
           else
             echo "No gotsha note found for $SHA"
           fi
-          echo "::endgroup::"
 
       - name: Verify
         run: |
