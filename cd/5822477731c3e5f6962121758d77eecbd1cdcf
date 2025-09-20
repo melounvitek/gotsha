@@ -31,5 +31,5 @@ Gotsha::ActionDispatcher
   with unknown action
 [32m    raises HardFail error with user friendly message[0m
 
-Finished in 0.00616 seconds (files took 0.05677 seconds to load)
+Finished in 0.00611 seconds (files took 0.0577 seconds to load)
 [32m8 examples, 0 failures[0m
