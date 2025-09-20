@@ -34,14 +34,24 @@ module Gotsha
 
           next if command_result.success?
 
+          create_git_note!("Tests failed:")
           puts command_result.text_output
           raise fail_exception, "tests failed"
         end
       end
 
-      def create_git_note!
-        # TODO: use `@tests_text_outputs` to store it somehow in Git note
-        BashCommand.silent_run!("git notes --ref=gotsha add -f -m 'ok'")
+      def create_git_note!(prefix_text = "")
+        body = +""
+        body << prefix_text.to_s
+        body << "\n\n" unless prefix_text.to_s.empty?
+        body << @tests_text_outputs.join("\n\n")
+
+        b64 = [body].pack("m0") # base64 (no newlines)
+        esc = b64.gsub("'", %q('"'"')) # escape single quotes
+
+        BashCommand.silent_run!(
+          "PAGER=cat GIT_PAGER=cat sh -c 'printf %s \"#{esc}\" | base64 -d | git notes --ref=gotsha add -f -F -'"
+        )
       end
 
       def fail_exception

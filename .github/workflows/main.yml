@@ -12,14 +12,23 @@ jobs:
           fetch-depth: 0
           ref: ${{ github.event.pull_request.head.sha }}
 
-      - name: Fetch gotsha notes
+      - name: Fetch Gotsha notes
         run: git fetch origin 'refs/notes/gotsha:refs/notes/gotsha'
 
-      - name: Verify gotsha note
+      - name: Show tests output
+        run: |
+          SHA="${{ github.event.pull_request.head.sha }}"
+          if git --no-pager notes --ref=gotsha show "$SHA" >/dev/null 2>&1; then
+            git --no-pager notes --ref=gotsha show "$SHA"
+          else
+            echo "No gotsha note found for $SHA"
+          fi
+
+      - name: Verify
         run: |
           SHA="${{ github.event.pull_request.head.sha }}"
           NOTE="$(git notes --ref=gotsha show "$SHA" 2>/dev/null || true)"
-          if [ "$NOTE" = "ok" ]; then
+          if [ -n "$NOTE" ] && ! [[ "$NOTE" == Tests\ failed:* ]]; then
             echo "✓ gotsha verified for $SHA"
           else
             echo "::error ::Missing gotsha note for $SHA"

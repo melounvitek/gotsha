@@ -4,7 +4,11 @@ require "pty"
 
 module Gotsha
   class BashCommand
+    FORCE_OUTPUT_AFTER = 5
+
     def self.run!(command)
+      start_time = Time.now
+
       Config::USER_CONFIG["verbose"] && puts(command)
 
       stdout = +""
@@ -12,7 +16,9 @@ module Gotsha
 
       PTY.spawn(command) do |reader, _, pid|
         reader.each do |line|
-          Config::USER_CONFIG["verbose"] && puts(line)
+          seconds_from_start = Time.now - start_time
+
+          (Config::USER_CONFIG["verbose"] || seconds_from_start > FORCE_OUTPUT_AFTER) && puts(line)
           stdout << line
         end
       rescue Errno::EIO
