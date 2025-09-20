@@ -4,7 +4,7 @@ RSpec.describe Gotsha::Actions::Verify do
   describe "verify" do
     let(:last_sha) { "sha_test" }
 
-    context "when last note is ok" do
+    context "when tests ran fine" do
       before do
         expect(Gotsha::BashCommand)
           .to receive(:run!)
@@ -14,7 +14,7 @@ RSpec.describe Gotsha::Actions::Verify do
         expect(Gotsha::BashCommand)
           .to receive(:run!)
           .with("git --no-pager notes --ref=gotsha show #{last_sha}")
-          .and_return(double("bash_response", text_output: "ok"))
+          .and_return(double("bash_response", text_output: "Tests passed:"))
       end
 
       it "returns success message" do
@@ -24,7 +24,7 @@ RSpec.describe Gotsha::Actions::Verify do
       end
     end
 
-    context "when last note is not ok" do
+    context "when tests failed" do
       before do
         expect(Gotsha::BashCommand)
           .to receive(:run!)
@@ -34,13 +34,33 @@ RSpec.describe Gotsha::Actions::Verify do
         expect(Gotsha::BashCommand)
           .to receive(:run!)
           .with("git --no-pager notes --ref=gotsha show #{last_sha}")
-          .and_return(double("bash_response", text_output: ""))
+          .and_return(double("bash_response", text_output: "Tests failed:"))
       end
 
       it "raises HardFail error" do
         expect do
           described_class.new.call
-        end.to raise_error(Gotsha::Errors::HardFail)
+        end.to raise_error(Gotsha::Errors::HardFail, "tests failed")
+      end
+    end
+
+    context "when tests did not run" do
+      before do
+        expect(Gotsha::BashCommand)
+          .to receive(:run!)
+          .with("git --no-pager rev-parse HEAD")
+          .and_return(double("bash_response", text_output: last_sha))
+
+        expect(Gotsha::BashCommand)
+          .to receive(:run!)
+          .with("git --no-pager notes --ref=gotsha show #{last_sha}")
+          .and_return(double("bash_response", text_output: "error: no note found for object"))
+      end
+
+      it "raises HardFail error" do
+        expect do
+          described_class.new.call
+        end.to raise_error(Gotsha::Errors::HardFail, "not verified yet")
       end
     end
   end
