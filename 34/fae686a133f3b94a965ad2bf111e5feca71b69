@@ -73,7 +73,7 @@ Failures:
      [31m    # ./spec/gotsha/actions/run_spec.rb:20:in 'block (4 levels) in <top (required)>'[0m
      [36m# ./spec/gotsha/actions/run_spec.rb:20:in 'block (4 levels) in <top (required)>'[0m
 
-Finished in 29.75 seconds (files took 0.12103 seconds to load)
+Finished in 49.28 seconds (files took 0.08789 seconds to load)
 [31m14 examples, 1 failure[0m
 
 Failed examples:
