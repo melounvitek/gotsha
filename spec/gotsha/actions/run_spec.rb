@@ -47,7 +47,7 @@ RSpec.describe Gotsha::Actions::Run do
       end
 
       it "runs the command" do
-        b64 = [test_text_response].pack("m0")
+        b64 = ["Tests passed:\n\n#{test_text_response}"].pack("m0")
         esc = b64.gsub("'", %q('"'"'))
 
         expect(Gotsha::BashCommand)
