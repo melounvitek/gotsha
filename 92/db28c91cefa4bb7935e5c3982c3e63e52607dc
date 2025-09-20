@@ -49,7 +49,7 @@ Failures:
      [36m# ./lib/gotsha/action_dispatcher.rb:27:in 'Gotsha::ActionDispatcher.call'[0m
      [36m# ./spec/gotsha_spec.rb:112:in 'block (4 levels) in <top (required)>'[0m
 
-Finished in 0.01132 seconds (files took 0.05671 seconds to load)
+Finished in 0.01135 seconds (files took 0.05768 seconds to load)
 [31m8 examples, 1 failure[0m
 
 Failed examples:
