@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.describe Gotsha::ActionDispatcher do
+RSpec.describe Gotsha::Actions::Verify do
   before do
     allow($stdout).to receive(:puts)
   end
-
 
   describe "verify" do
     let(:last_sha) { "sha_test" }
@@ -23,7 +22,7 @@ RSpec.describe Gotsha::ActionDispatcher do
       end
 
       it "returns success message" do
-        result = described_class.call(:verify)
+        result = described_class.new.call
 
         expect(result).to eq("tests passed")
       end
@@ -44,7 +43,7 @@ RSpec.describe Gotsha::ActionDispatcher do
 
       it "raises HardFail error" do
         expect do
-          described_class.call(:verify)
+          described_class.new.call
         end.to raise_error(Gotsha::Errors::HardFail)
       end
     end
