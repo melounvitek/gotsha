@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 RSpec.describe Gotsha::Actions::Verify do
-  before do
-    allow($stdout).to receive(:puts)
-  end
-
   describe "verify" do
     let(:last_sha) { "sha_test" }
 
