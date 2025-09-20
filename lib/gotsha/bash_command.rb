@@ -33,7 +33,6 @@ module Gotsha
     def self.silent_run!(command)
       return run!(command) if UserConfig.get(:verbose)
 
-
       run!("#{command} 2>&1")
     end
 
