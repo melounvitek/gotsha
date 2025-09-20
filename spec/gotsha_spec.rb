@@ -107,7 +107,7 @@ RSpec.describe Gotsha::ActionDispatcher do
 
         expect(Gotsha::BashCommand)
           .to receive(:silent_run!)
-          .with("AGER=cat GIT_PAGER=cat sh -c 'printf %s \"#{esc}\" | base64 -d | git notes --ref=gotsha add -f -F -'")
+          .with("PAGER=cat GIT_PAGER=cat sh -c 'printf %s \"#{esc}\" | base64 -d | git notes --ref=gotsha add -f -F -'")
 
         described_class.call(:run)
       end
