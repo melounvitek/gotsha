@@ -40,7 +40,7 @@ Gotsha::Actions::Run
     without test command configured
 [31m      fails with proper error (FAILED - 1)[0m
     with a test command configured
-[31m      runs the command (FAILED - 2)[0m
+[32m      runs the command[0m
 
 Gotsha::Actions::Verify
   verify
@@ -64,31 +64,18 @@ Failures:
      [31m    "please, define some test commands in `.gotsha/config.yml`"[0m
      [31m  )[0m
      [31m[0m
-     [31m  expected Gotsha::Errors::HardFail with "please, define some test commands in `.gotsha/config.yml`", got #<RSpec::Mocks::MockExpectationError:"#<Gotsha::UserConfig (class)> received :get with unexpected arg...\e[0m\n Please stub a default value first if message might be received with other args as well. \n"> with backtrace:[0m
-     [31m    # ./lib/gotsha/actions/run.rb:66:in 'Gotsha::Actions::Run#commands'[0m
-     [31m    # ./lib/gotsha/actions/run.rb:21:in 'Gotsha::Actions::Run#ensure_commands_defined!'[0m
-     [31m    # ./lib/gotsha/actions/run.rb:11:in 'Gotsha::Actions::Run#call'[0m
+     [31m  expected Gotsha::Errors::HardFail with "please, define some test commands in `.gotsha/config.yml`", got #<Gotsha::Errors::SoftFail: tests failed> with backtrace:[0m
+     [31m    # ./lib/gotsha/actions/run.rb:39:in 'block in Gotsha::Actions::Run#run_commands!'[0m
+     [31m    # ./lib/gotsha/actions/run.rb:28:in 'Array#each'[0m
+     [31m    # ./lib/gotsha/actions/run.rb:28:in 'Gotsha::Actions::Run#run_commands!'[0m
+     [31m    # ./lib/gotsha/actions/run.rb:12:in 'Gotsha::Actions::Run#call'[0m
      [31m    # ./spec/gotsha/actions/run_spec.rb:19:in 'block (5 levels) in <top (required)>'[0m
      [31m    # ./spec/gotsha/actions/run_spec.rb:20:in 'block (4 levels) in <top (required)>'[0m
      [36m# ./spec/gotsha/actions/run_spec.rb:20:in 'block (4 levels) in <top (required)>'[0m
 
-  2) Gotsha::Actions::Run run with a test command configured runs the command
-     [31mFailure/Error: command_result = BashCommand.run!(command)[0m
-     [31m[0m
-     [31m  #<Gotsha::BashCommand (class)> received :run! with unexpected arguments[0m
-     [31m    expected: ("rails t")[0m
-     [31m         got: ("rubocop")[0m
-     [31m   Please stub a default value first if message might be received with other args as well. [0m
-     [36m# ./lib/gotsha/actions/run.rb:31:in 'block in Gotsha::Actions::Run#run_commands!'[0m
-     [36m# ./lib/gotsha/actions/run.rb:28:in 'Array#each'[0m
-     [36m# ./lib/gotsha/actions/run.rb:28:in 'Gotsha::Actions::Run#run_commands!'[0m
-     [36m# ./lib/gotsha/actions/run.rb:12:in 'Gotsha::Actions::Run#call'[0m
-     [36m# ./spec/gotsha/actions/run_spec.rb:57:in 'block (4 levels) in <top (required)>'[0m
-
-Finished in 0.02043 seconds (files took 0.08368 seconds to load)
-[31m14 examples, 2 failures[0m
+Finished in 1.16 seconds (files took 0.08695 seconds to load)
+[31m14 examples, 1 failure[0m
 
 Failed examples:
 
 [31mrspec ./spec/gotsha/actions/run_spec.rb:17[0m [36m# Gotsha::Actions::Run run without test command configured fails with proper error[0m
-[31mrspec ./spec/gotsha/actions/run_spec.rb:49[0m [36m# Gotsha::Actions::Run run with a test command configured runs the command[0m
