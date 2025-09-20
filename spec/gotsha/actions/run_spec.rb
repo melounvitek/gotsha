@@ -39,18 +39,14 @@ RSpec.describe Gotsha::Actions::Run do
           .to receive(:fetch)
           .with("interrupt_push_on_tests_failure")
           .and_return(false)
-      end
 
-      it "runs the command" do
-        allow_any_instance_of(described_class)
-          .to receive(:last_commit_sha)
-          .and_return(sha)
-
-        expect(Gotsha::BashCommand)
+        allow(Gotsha::BashCommand)
           .to receive(:run!)
           .with(test_command)
           .and_return(double("bash_response", "success?" => true, "text_output" => "test_text_response"))
+      end
 
+      it "runs the command" do
         b64 = ["test_text_response"].pack("m0")
         esc = b64.gsub("'", %q('"'"'))
 
