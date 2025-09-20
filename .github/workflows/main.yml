@@ -34,6 +34,7 @@ jobs:
             exit 1
           elif [[ "$NOTE" == Tests\ failed:* ]]; then
           echo "::error ::Gotsha: Tests failed"
+          git --no-pager notes --ref=gotsha show "$SHA"
             exit 1
           elif [[ "$NOTE" == Tests\ passed:* ]]; then
           echo "✓ Gotsha: tests passed"

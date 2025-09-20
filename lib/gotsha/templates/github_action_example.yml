@@ -35,6 +35,7 @@ jobs:
           echo "::error ::Gotsha: not verified yet"
             exit 1
           elif [[ "$NOTE" == Tests\ failed:* ]]; then
+          git --no-pager notes --ref=gotsha show "$SHA"
           echo "::error ::Gotsha: Tests failed"
             exit 1
           elif [[ "$NOTE" == Tests\ passed:* ]]; then
