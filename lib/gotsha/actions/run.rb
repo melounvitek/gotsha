@@ -10,7 +10,7 @@ module Gotsha
       def call
         ensure_commands_defined!
         run_commands!
-        create_git_note!
+        create_git_note!("Tests passed:")
 
         "tests passed"
       end

@@ -27,10 +27,18 @@ jobs:
       - name: Verify
         run: |
           SHA="${{ github.event.pull_request.head.sha }}"
-          NOTE="$(git notes --ref=gotsha show "$SHA" 2>/dev/null || true)"
-          if [ -n "$NOTE" ] && ! [[ "$NOTE" == Tests\ failed:* ]]; then
-            echo "✓ gotsha verified for $SHA"
+          NOTE="$(git --no-pager notes --ref=gotsha show "$SHA" 2>/dev/null || true)"
+
+          if [ -z "$NOTE" ]; then
+          echo "::error ::Gotsha: not verified yet"
+            exit 1
+          elif [[ "$NOTE" == Tests\ failed:* ]]; then
+          echo "::error ::Gotsha: Tests failed"
+          git --no-pager notes --ref=gotsha show "$SHA"
+            exit 1
+          elif [[ "$NOTE" == Tests\ passed:* ]]; then
+          echo "✓ Gotsha: tests passed"
           else
-            echo "::error ::Missing gotsha note for $SHA"
+            echo "::error ::Unrecognized Gotsha note format for $SHA"
             exit 1
           fi
