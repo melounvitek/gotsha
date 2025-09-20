@@ -1,0 +1,20 @@
+Tests failed:
+
+Inspecting 16 files
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33mC[0m[32m.[0m
+
+Offenses:
+
+[36mspec/gotsha_spec.rb[0m:110:121: [33mC[0m: Layout/LineLength: Line is too long. [121/120]
+          .with("PPAGER=cat GIT_PAGER=cat sh -c 'printf %s \"#{esc}\" | base64 -d | git notes --ref=gotsha add -f -F -'")
+                                                                                                                        ^
+
+16 files inspected, [31m1 offense[0m detected
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false
