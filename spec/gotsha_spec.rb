@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/BlockLength:
 RSpec.describe Gotsha::ActionDispatcher do
   before do
     allow($stdout).to receive(:puts)
@@ -131,5 +130,4 @@ RSpec.describe Gotsha::ActionDispatcher do
       end
     end
   end
-  # rubocop:enable Metrics/BlockLength:
 end
