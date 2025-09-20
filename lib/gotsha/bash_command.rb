@@ -9,7 +9,7 @@ module Gotsha
     def self.run!(command)
       start_time = Time.now
 
-      Config::USER_CONFIG["verbose"] && puts(command)
+      UserConfig.get(:verbose) && puts(command)
 
       stdout = +""
       status = nil
@@ -18,7 +18,7 @@ module Gotsha
         reader.each do |line|
           seconds_from_start = Time.now - start_time
 
-          (Config::USER_CONFIG["verbose"] || seconds_from_start > FORCE_OUTPUT_AFTER) && puts(line)
+          (UserConfig.get(:verbose) || seconds_from_start > FORCE_OUTPUT_AFTER) && puts(line)
           stdout << line
         end
       rescue Errno::EIO
@@ -31,7 +31,7 @@ module Gotsha
     end
 
     def self.silent_run!(command)
-      return run!(command) if Config::USER_CONFIG["verbose"]
+      return run!(command) if UserConfig.get(:verbose)
 
       run!("#{command} 2>&1")
     end

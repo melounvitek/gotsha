@@ -9,12 +9,5 @@ module Gotsha
     GH_CONFIG_TEMPLATE_PATH = File.expand_path("templates/github_action_example.yml", __dir__)
     HOOKS_TEMPLATES_DIR = File.expand_path("templates", __dir__)
     HOOKS_DIR = File.join(CONFIG_DIR, "hooks")
-
-    USER_CONFIG =
-      begin
-        YAML.load_file(CONFIG_FILE)
-      rescue Errno::ENOENT
-        {}
-      end
   end
 end

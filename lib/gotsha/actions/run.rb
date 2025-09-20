@@ -55,7 +55,7 @@ module Gotsha
       end
 
       def fail_exception
-        if Config::USER_CONFIG.fetch("interrupt_push_on_tests_failure", false)
+        if UserConfig.get(:interrupt_push_on_tests_failure)
           Errors::HardFail
         else
           Errors::SoftFail
@@ -63,7 +63,7 @@ module Gotsha
       end
 
       def commands
-        @commands ||= Array(Config::USER_CONFIG.fetch("commands"))
+        @commands ||= UserConfig.get(:commands) || []
       end
     end
   end

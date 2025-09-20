@@ -8,9 +8,9 @@ RSpec.describe Gotsha::Actions::Run do
   describe "run" do
     context "without test command configured" do
       before do
-        allow(Gotsha::Config::USER_CONFIG)
-          .to receive(:fetch)
-          .with("commands")
+        allow(Gotsha::UserConfig)
+          .to receive(:get)
+          .with(:commands)
           .and_return([])
       end
 
@@ -30,14 +30,14 @@ RSpec.describe Gotsha::Actions::Run do
       let(:sha) { "test-sha" }
 
       before do
-        allow(Gotsha::Config::USER_CONFIG)
-          .to receive(:fetch)
-          .with("commands")
+        allow(Gotsha::UserConfig)
+          .to receive(:get)
+          .with(:commands)
           .and_return([test_command])
 
-        allow(Gotsha::Config::USER_CONFIG)
-          .to receive(:fetch)
-          .with("interrupt_push_on_tests_failure")
+        allow(Gotsha::UserConfig)
+          .to receive(:get)
+          .with(:interrupt_push_on_tests_failure)
           .and_return(false)
 
         allow(Gotsha::BashCommand)
