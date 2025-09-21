@@ -8,7 +8,7 @@ interrupt_push_on_tests_failure: false
 # Your test commands to run
 commands:
  - rubocop
- - rspec
+ - rspec --order rand
 
 # Print out more details (Bash commands output, etc.)
 verbose: false
