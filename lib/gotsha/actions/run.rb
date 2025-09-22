@@ -9,10 +9,12 @@ module Gotsha
 
       def call
         ensure_commands_defined!
+        # create commit
         run_commands!
         create_git_note!("Tests passed:")
+        # push
 
-        "tests passed"
+        "commit verified"
       end
 
       private
@@ -34,9 +36,10 @@ module Gotsha
 
           next if command_result.success?
 
-          create_git_note!("Tests failed:")
-          puts command_result.text_output
-          raise fail_exception, "tests failed"
+          create_git_note!("Tests failed:\n\n")
+          puts command_result.text_output.split("\n").last(20).join("\n")
+          puts "\n\nRun `gotsha show` for full output"
+          raise fail_exception, "failed, commit not verified"
         end
       end
 
