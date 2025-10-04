@@ -12,7 +12,7 @@ RSpec.describe Gotsha::Actions::Show do
     end
 
     context "when last commit test were success" do
-      let(:tests_content) { "Tests passed:\n\n" }
+      let(:tests_content) { "Test passed:\n\n" }
 
       it "returns the result" do
         expect(described_class.new.call).to eq(tests_content)
@@ -20,7 +20,7 @@ RSpec.describe Gotsha::Actions::Show do
     end
 
     context "when last commit tests failed" do
-      let(:tests_content) { "Tests failed:\n\n" }
+      let(:tests_content) { "Test failed:\n\n" }
 
       it "returns not verified" do
         expect do
