@@ -1,0 +1,23 @@
+Tests failed:
+
+Inspecting 19 files
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33mC[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+Offenses:
+
+[36mlib/gotsha/actions/verify.rb[0m:12:53: [33mC[0m: [33m[Correctable] [0mStyle/IfUnlessModifier: Modifier form of [33mif[0m makes the line too long.
+        raise(Errors::HardFail, "not verified yet") if last_commit_note.start_with?("error: no note found") || last_commit_note.to_s.empty?
+                                                    ^^
+[36mlib/gotsha/actions/verify.rb[0m:12:121: [33mC[0m: [33m[Correctable] [0mLayout/LineLength: Line is too long. [139/120]
+        raise(Errors::HardFail, "not verified yet") if last_commit_note.start_with?("error: no note found") || last_commit_note.to_s.empty?
+                                                                                                                        ^^^^^^^^^^^^^^^^^^^
+
+19 files inspected, [31m2 offenses[0m detected, [33m2 offenses[0m autocorrectable
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false

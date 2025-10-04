@@ -1,0 +1,20 @@
+Tests failed:
+
+Inspecting 17 files
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33mC[0m[32m.[0m[32m.[0m
+
+Offenses:
+
+[36mspec/gotsha/action_dispatcher_spec.rb[0m:3:1: [33mC[0m: Metrics/BlockLength: Block has too many lines. [37/25]
+RSpec.describe Gotsha::ActionDispatcher do [33m...[0m
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+17 files inspected, [31m1 offense[0m detected
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false
