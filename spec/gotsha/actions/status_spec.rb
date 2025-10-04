@@ -34,7 +34,7 @@ RSpec.describe Gotsha::Actions::Status do
         expect(Gotsha::BashCommand)
           .to receive(:run!)
           .with("git --no-pager notes --ref=gotsha show #{last_sha}")
-          .and_return(double("bash_response", text_output: "Tests failed:"))
+          .and_return(double("bash_response", text_output: "Tests failed:\n\n"))
       end
 
       it "raises HardFail error" do

@@ -3,6 +3,8 @@
 module Gotsha
   module Actions
     class Run
+      TESTS_FAILED_NOTE_PREFIX = "Tests failed:\n\n"
+
       def initialize
         @tests_text_outputs = []
       end
@@ -34,7 +36,7 @@ module Gotsha
 
           next if command_result.success?
 
-          create_git_note!("Tests failed:\n\n")
+          create_git_note!(TESTS_FAILED_NOTE_PREFIX)
           puts command_result.text_output.split("\n").last(20).join("\n")
 
           raise fail_exception, "tests failed (run `gotsha show` for full output)"
