@@ -4,6 +4,7 @@ require "fileutils"
 require "yaml"
 
 require_relative "gotsha/action_dispatcher"
+require_relative "gotsha/actions/commit"
 require_relative "gotsha/actions/init"
 require_relative "gotsha/actions/run"
 require_relative "gotsha/actions/status"
