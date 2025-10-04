@@ -5,7 +5,7 @@ RSpec.describe Gotsha::Actions::Show do
     it "runs Git notes show command" do
       expect(Gotsha::BashCommand)
         .to receive(:silent_run!)
-        .with("git notes --ref=gotsha show")
+        .with("git --no-pager notes --ref=gotsha show")
 
       described_class.new.call
     end
