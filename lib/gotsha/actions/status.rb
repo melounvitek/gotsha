@@ -2,7 +2,7 @@
 
 module Gotsha
   module Actions
-    class Verify
+    class Status
       def call
         last_commit_sha = BashCommand.run!("git --no-pager rev-parse HEAD").text_output
 
