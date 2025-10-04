@@ -8,6 +8,10 @@ module Gotsha
 
         raise(Errors::HardFail, "not verified yet") unless command.success?
 
+        gotsha_result = command.text_output
+
+        raise(Errors::HardFail, gotsha_result) if gotsha_result.start_with?(Run::TESTS_FAILED_NOTE_PREFIX)
+
         command.text_output
       end
     end
