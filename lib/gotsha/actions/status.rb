@@ -13,6 +13,11 @@ module Gotsha
           raise(Errors::HardFail,
                 "not verified yet")
         end
+
+        puts " !!!!! "
+        puts last_commit_note[0..10]
+        puts " !!!!! "
+
         raise(Errors::HardFail, "tests failed") if last_commit_note.start_with?(Run::TESTS_FAILED_NOTE_PREFIX)
         raise(Errors::HardFail, "unknown note content") unless last_commit_note.start_with?("Tests passed:")
 
