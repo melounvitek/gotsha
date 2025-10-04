@@ -91,30 +91,32 @@
         <!-- Checkmark integrated near 'SHA' -->
         <path class="stroke" d="M660,120 l35,35 70,-80"/>
       </svg>
-      <div class="title">your local CI. Coming soon!</div>
+      <div class="title">Your local CI</div>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
-        <h1 id="hero-title">Sign-off your commits locally — and prove it.</h1>
-        <p>Run tests & linters on your machine, store results as Git notes, and let your PR show the proof.</p>
+        <h1 id="hero-title">Sign-off your commits locally — and let others see it.</h1>
+        <p>Run tests & linters on your machine, store results as Git notes, and let your PR show your tests output. Quickly and automatically.</p>
         <div class="actions">
-          <a class="btn primary" href="https://github.com/melounvitek/gotsha" target="_blank">View on Github</a>
+          <a class="btn primary" href="https://github.com/melounvitek/gotsha" target="_blank">View more details on Github</a>
+          <a class="btn secondary" href="https://github.com/melounvitek/gotsha/pull/35" target="_blank">Demo pull request</a>
         </div>
       </section>
 
       <section class="grid">
         <article class="card">
-          <h3>1) Run locally</h3>
-          <p>Gotsha runs the project test suite (or linters, or whatever else your simple YML config file says) on your machine. This can automatically happen for every Git commit, Git push, or only if you explicitly call it. Fast, offline, no queue. </p>
+          <h3>1) Runs locally</h3>
+          <p>Gotsha runs the project test suite on your machine. This can happen automatically (for every Git commit or push), or manually; right before you ask for review. You can easily configure it whatever way suits your project best.</p>
         </article>
         <article class="card">
-          <h3>2) Record the SHA</h3>
-          <p>Test results are attached as <em>Git notes</em> for the recent commit SHA.</p>
+          <h3>2) Stores test results for commit SHA</h3>
+          <p>Test results from every run are attached as <em>Git notes</em> for the recent commit SHA. (Got-SHA... you get it, right?)</p>
         </article>
         <article class="card">
-          <h3>3) Show in your GitHub PR</h3>
-          <p>Push as usual — the note follows your commit, tiny Github Action verifies it (in few seconds) and makes the tests result visible to reviewers.</p>
+          <h3>3) Displays results in your GitHub PR</h3>
+          <p>Push as usual — the note follows your commit, and tiny Github Action instantly verifies it
+              and makes the tests result visible to reviewers. <a target="_blank" href="https://private-user-images.githubusercontent.com/6076092/497493568-cf5d6492-02a0-47ee-81ee-4e34234a7983.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTk2MTE5MTAsIm5iZiI6MTc1OTYxMTYxMCwicGF0aCI6Ii82MDc2MDkyLzQ5NzQ5MzU2OC1jZjVkNjQ5Mi0wMmEwLTQ3ZWUtODFlZS00ZTM0MjM0YTc5ODMucG5nP1gtQW16LUFsZ29yaXRobT1BV1M0LUhNQUMtU0hBMjU2JlgtQW16LUNyZWRlbnRpYWw9QUtJQVZDT0RZTFNBNTNQUUs0WkElMkYyMDI1MTAwNCUyRnVzLWVhc3QtMSUyRnMzJTJGYXdzNF9yZXF1ZXN0JlgtQW16LURhdGU9MjAyNTEwMDRUMjEwMDEwWiZYLUFtei1FeHBpcmVzPTMwMCZYLUFtei1TaWduYXR1cmU9NmI3NmI4OWU4MDRlYjdhZmE3ODg5OWQ4NWY0N2M2M2JmOGJjOTYwYmY4MjE5YzM2Mjk3OGExYjJmNzY2YjkzMSZYLUFtei1TaWduZWRIZWFkZXJzPWhvc3QifQ.ZWDXAPkqce5Tg6ObHzTPT8GriqtJDXeXRpEjmhK_r7A">Check it out</a>; it even persist all the green color!</p>
         </article>
       </section>
 
