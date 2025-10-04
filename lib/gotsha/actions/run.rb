@@ -9,10 +9,8 @@ module Gotsha
 
       def call
         ensure_commands_defined!
-        # create commit
         run_commands!
         create_git_note!("Tests passed:")
-        # push
 
         "commit verified"
       end
