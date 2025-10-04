@@ -11,4 +11,4 @@ commands:
  - rspec --order rand
 
 # Print out more details (Bash commands output, etc.)
-verbose: true
+verbose: false
