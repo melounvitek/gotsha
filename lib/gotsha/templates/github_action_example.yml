@@ -32,7 +32,7 @@ jobs:
           NOTE="$(git --no-pager notes --ref=gotsha show "$SHA" 2>/dev/null || true)"
 
           if [ -z "$NOTE" ]; then
-          echo "::error ::Gotsha: not verified yet. Run `gotsha commit` to verify."
+          echo "::error ::Gotsha: not verified yet. Run 'gotsha commit' to verify."
             exit 1
           elif [[ "$NOTE" == Tests\ failed:* ]]; then
           git --no-pager notes --ref=gotsha show "$SHA"
