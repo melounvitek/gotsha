@@ -4,13 +4,11 @@ module Gotsha
   module Actions
     class Show
       def call
-        command = BashCommand.run!("git notes --ref=gotsha show")
+        command = BashCommand.silent_run!("git --no-pager notes --ref=gotsha show")
 
-        if command.success?
-          command.text_output
-        else
-          raise Errors::HardFail, "not verified yet"
-        end
+        raise(Errors::HardFail, "not verified yet") unless command.success?
+
+        command.text_output
       end
     end
   end
