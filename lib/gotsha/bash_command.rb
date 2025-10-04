@@ -12,7 +12,6 @@ module Gotsha
       UserConfig.get(:verbose) && puts(command)
 
       stdout = +""
-      status = nil
 
       wrapped = %(script -qefc #{Shellwords.escape(command)} /dev/null)
 
