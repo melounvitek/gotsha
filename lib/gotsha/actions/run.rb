@@ -13,7 +13,7 @@ module Gotsha
       def call
         ensure_commands_defined!
         run_commands!
-        create_git_note!(TESTS_PASSED_NOTE_PREFIX )
+        create_git_note!(TESTS_PASSED_NOTE_PREFIX)
 
         "commit verified"
       end

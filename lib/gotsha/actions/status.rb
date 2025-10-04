@@ -15,7 +15,10 @@ module Gotsha
         end
 
         raise(Errors::HardFail, "tests failed") if last_commit_note.start_with?(Run::TESTS_FAILED_NOTE_PREFIX)
-        raise(Errors::HardFail, "unknown note content") unless last_commit_note.start_with?(Run::TESTS_PASSED_NOTE_PREFIX)
+
+        unless last_commit_note.start_with?(Run::TESTS_PASSED_NOTE_PREFIX)
+          raise(Errors::HardFail, "unknown note content")
+        end
 
         "tests passed"
       end
