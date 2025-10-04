@@ -2,7 +2,7 @@
 
 RSpec.describe Gotsha::Actions::Show do
   describe "show" do
-    let(:git_command_mock) { double("git", success?: tests_content.to_s.length > 0, text_output: tests_content) }
+    let(:git_command_mock) { double("git", success?: !tests_content.to_s.empty?, text_output: tests_content) }
 
     before do
       expect(Gotsha::BashCommand)
