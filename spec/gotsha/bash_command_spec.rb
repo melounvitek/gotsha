@@ -7,7 +7,11 @@ RSpec.describe Gotsha::BashCommand do
     let(:status) { instance_double(Process::Status, success?: true) }
 
     before do
-      allow(PTY).to receive(:spawn).and_yield(reader, anything, pid)
+      io = StringIO.new("hello\nworld\n")
+      allow(io).to receive(:each).and_call_original
+      allow(io).to receive(:pid).and_return(pid)
+
+      allow(IO).to receive(:popen).and_return(io)
       allow(Process).to receive(:wait2).with(pid).and_return([nil, status])
     end
 

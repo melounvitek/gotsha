@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "pty"
+require "shellwords"
 
 module Gotsha
   class BashCommand
@@ -8,23 +9,20 @@ module Gotsha
 
     def self.run!(command)
       start_time = Time.now
-
       UserConfig.get(:verbose) && puts(command)
 
       stdout = +""
-      status = nil
 
-      PTY.spawn(command) do |reader, _, pid|
-        reader.each do |line|
-          seconds_from_start = Time.now - start_time
+      wrapped = %(script -qefc #{Shellwords.escape(command)} /dev/null)
 
-          (UserConfig.get(:verbose) || seconds_from_start > FORCE_OUTPUT_AFTER) && puts(line)
+      io = IO.popen(wrapped, in: File::NULL, err: %i[child out])
+      begin
+        io.each do |line|
+          (UserConfig.get(:verbose) || Time.now - start_time > FORCE_OUTPUT_AFTER) && puts(line)
           stdout << line
         end
-      rescue Errno::EIO
-        # expected when the child closes the PTY
       ensure
-        _, status = Process.wait2(pid)
+        _, status = Process.wait2(io.pid)
       end
 
       new(stdout, status)
