@@ -5,6 +5,9 @@ module Gotsha
     class Status
       def call
         last_commit_sha = BashCommand.run!("git --no-pager rev-parse HEAD").text_output
+        puts "!!!!!"
+        puts last_commit_sha
+        puts "!!!!!"
 
         last_commit_note =
           BashCommand.run!("git --no-pager notes --ref=gotsha show #{last_commit_sha}").text_output
