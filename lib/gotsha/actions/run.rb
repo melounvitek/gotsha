@@ -38,9 +38,7 @@ module Gotsha
           puts command_result.text_output.split("\n").last(20).join("\n")
 
 
-
-          puts "\n\nRun `gotsha show` for full output"
-          raise fail_exception, "tests failed"
+          raise fail_exception, "tests failed (run `gotsha show` for full output)"
         end
       end
 
