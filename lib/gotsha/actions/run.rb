@@ -37,7 +37,6 @@ module Gotsha
           create_git_note!("Tests failed:\n\n")
           puts command_result.text_output.split("\n").last(20).join("\n")
 
-
           raise fail_exception, "tests failed (run `gotsha show` for full output)"
         end
       end
