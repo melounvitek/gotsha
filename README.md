@@ -12,7 +12,7 @@ Then, you can see the tests results in a Github action:
 
 <img width="1022" height="858" alt="image" src="https://github.com/user-attachments/assets/cf5d6492-02a0-47ee-81ee-4e34234a7983" />
 
-(Screenshots from a real [demo pull request](https://github.com/melounvitek/gotsha/pull/35); feel free to check it!)
+(Screenshots from a real [demo pull request](https://github.com/melounvitek/gotsha/pull/35); check it out!)
 
 Based on your workflow and tests speed, you can configure them to auto-run on every commit, before every push, or just manually. Whenever pushing to remote repository, the Git notes (which is what's used to store the test results) get sent there as well.
 
