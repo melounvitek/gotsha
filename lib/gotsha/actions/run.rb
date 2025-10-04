@@ -3,6 +3,7 @@
 module Gotsha
   module Actions
     class Run
+      TESTS_PASSED_NOTE_PREFIX = "Tests passed:"
       TESTS_FAILED_NOTE_PREFIX = "Tests failed:"
 
       def initialize
@@ -12,7 +13,7 @@ module Gotsha
       def call
         ensure_commands_defined!
         run_commands!
-        create_git_note!("Tests passed:")
+        create_git_note!(TESTS_PASSED_NOTE_PREFIX )
 
         "commit verified"
       end
