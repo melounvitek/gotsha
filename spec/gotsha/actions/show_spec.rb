@@ -2,8 +2,7 @@
 
 RSpec.describe Gotsha::Actions::Show do
   describe "show" do
-    let(:git_text_response_mock) { "test text, does not matter here" }
-    let(:git_command_mock) { double("git", success?: git_note_exists, text_output: git_text_response_mock) }
+    let(:git_command_mock) { double("git", success?: !tests_content.to_s.empty?, text_output: tests_content) }
 
     before do
       expect(Gotsha::BashCommand)
@@ -12,18 +11,28 @@ RSpec.describe Gotsha::Actions::Show do
         .and_return(git_command_mock)
     end
 
-    context "when last commit was verified" do
-      let(:git_note_exists) { true }
+    context "when last commit test were success" do
+      let(:tests_content) { "Tests passed:\n\n" }
 
       it "returns the result" do
-        expect(described_class.new.call).to eq(git_text_response_mock)
+        expect(described_class.new.call).to eq(tests_content)
+      end
+    end
+
+    context "when last commit tests failed" do
+      let(:tests_content) { "Tests failed:\n\n" }
+
+      it "returns not verified" do
+        expect do
+          described_class.new.call
+        end.to raise_exception(Gotsha::Errors::HardFail, tests_content)
       end
     end
 
     context "when last commit was not verified" do
-      let(:git_note_exists) { false }
+      let(:tests_content) { nil }
 
-      it "returns the result" do
+      it "returns not verified" do
         expect do
           described_class.new.call
         end.to raise_exception(Gotsha::Errors::HardFail, "not verified yet")

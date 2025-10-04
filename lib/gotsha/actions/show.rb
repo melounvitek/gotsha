@@ -8,7 +8,13 @@ module Gotsha
 
         raise(Errors::HardFail, "not verified yet") unless command.success?
 
-        command.text_output
+        gotsha_result = command.text_output
+
+        if gotsha_result.start_with?(Run::TESTS_FAILED_NOTE_PREFIX.delete("^a-zA-Z0-9 "))
+          raise(Errors::HardFail, gotsha_result)
+        end
+
+        gotsha_result
       end
     end
   end
