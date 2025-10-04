@@ -14,7 +14,7 @@ module Gotsha
           raise(Errors::HardFail, gotsha_result)
         end
 
-        command.text_output
+        gotsha_result
       end
     end
   end
