@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-RSpec.describe Gotsha::Actions::Verify do
-  describe "verify" do
+RSpec.describe Gotsha::Actions::Status do
+  describe "status" do
     let(:last_sha) { "sha_test" }
 
     context "when tests ran fine" do

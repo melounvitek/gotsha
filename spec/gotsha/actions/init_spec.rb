@@ -42,11 +42,11 @@ RSpec.describe Gotsha::Actions::Init do
         expect(File).not_to receive(:write).with(Gotsha::CONFIG_FILE, File.read(Gotsha::CONFIG_TEMPLATE_PATH))
         expect(File).to receive(:write).with(Gotsha::GH_CONFIG_FILE, File.read(Gotsha::GH_CONFIG_TEMPLATE_PATH))
 
-        expect(FileUtils).not_to receive(:cp).with(anything, ".gotsha/hooks/pre-push")
-        expect(FileUtils).not_to receive(:cp).with(anything, ".gotsha/hooks/post-commit")
+        expect(FileUtils).to receive(:cp).with(anything, ".gotsha/hooks/pre-push")
+        expect(FileUtils).to receive(:cp).with(anything, ".gotsha/hooks/post-commit")
 
-        expect(FileUtils).not_to receive(:chmod).with("+x", ".gotsha/hooks/pre-push")
-        expect(FileUtils).not_to receive(:chmod).with("+x", ".gotsha/hooks/post-commit")
+        expect(FileUtils).to receive(:chmod).with("+x", ".gotsha/hooks/pre-push")
+        expect(FileUtils).to receive(:chmod).with("+x", ".gotsha/hooks/post-commit")
 
         expect(Kernel).to receive(:system).with("git config --local core.hooksPath .gotsha/hooks")
 

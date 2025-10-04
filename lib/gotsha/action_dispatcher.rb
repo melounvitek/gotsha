@@ -20,8 +20,10 @@ module Gotsha
       begin
         action = const_get("Gotsha::Actions::#{action_name.capitalize}")
       rescue NameError
+        commands = Gotsha::Actions.constants.map(&:downcase).sort.join("\n")
+
         raise Errors::HardFail,
-              "unknown command `#{action_name}`, avaible commands: \n\n#{Gotsha::Actions.constants.map(&:downcase).join("\n")}"
+              "unknown command `#{action_name}`, available commands: \n\n#{commands}"
       end
 
       action.new.call
