@@ -1,4 +1,4 @@
-# If you want to create Github Action, copy this file into `.gihtub` folder
+# If you want to create Github Action, copy this file into `.github` folder
 # For example: `[PROJECT_ROOT]/.github/workflows/gotsha.yml`
 name: Gotsha
 
@@ -32,7 +32,7 @@ jobs:
           NOTE="$(git --no-pager notes --ref=gotsha show "$SHA" 2>/dev/null || true)"
 
           if [ -z "$NOTE" ]; then
-          echo "::error ::Gotsha: not verified yet"
+          echo "::error ::Gotsha: not verified yet. Run `gotsha commit` to verify."
             exit 1
           elif [[ "$NOTE" == Tests\ failed:* ]]; then
           git --no-pager notes --ref=gotsha show "$SHA"
