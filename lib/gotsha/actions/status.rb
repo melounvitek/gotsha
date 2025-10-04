@@ -15,7 +15,7 @@ module Gotsha
         end
 
         puts " !!!!! "
-        puts last_commit_note[0..10]
+        puts last_commit_note
         puts " !!!!! "
 
         raise(Errors::HardFail, "tests failed") if last_commit_note.start_with?(Run::TESTS_FAILED_NOTE_PREFIX)
