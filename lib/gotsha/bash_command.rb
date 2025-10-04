@@ -5,7 +5,7 @@ require "shellwords"
 
 module Gotsha
   class BashCommand
-    FORCE_OUTPUT_AFTER = 3
+    FORCE_OUTPUT_AFTER = 4
 
     def self.run!(command)
       start_time = Time.now
