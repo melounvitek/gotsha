@@ -44,7 +44,6 @@ module Gotsha
       end
 
       def create_git_note!(prefix_text = "")
-
         body = +""
         body << prefix_text.to_s
         body << "\n\n" unless prefix_text.to_s.empty?
