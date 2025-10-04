@@ -20,8 +20,6 @@ module Gotsha
           src = File.join(Config::HOOKS_TEMPLATES_DIR, "git_hooks", hook)
           dst = File.join(Config::HOOKS_DIR, hook)
 
-          next if File.exist?(dst)
-
           FileUtils.cp(src, dst)
           FileUtils.chmod("+x", dst)
         end

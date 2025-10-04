@@ -3,7 +3,7 @@ set -euo pipefail
 
 [ -f .gotsha/config.yml ] || exit 0
 
-grep -qE 'pre_push_tests:\s*true' .gotsha/config.yml && (exe/gotsha verify || exe/gotsha)
+grep -qE 'pre_push_tests:\s*true' .gotsha/config.yml && (exe/gotsha status || bundle exec gotsha)
 
 push_gotsha_notes() {
   # if already done before, let's only push the notes and exit
