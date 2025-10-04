@@ -14,7 +14,7 @@ module Gotsha
                 "not verified yet")
         end
         raise(Errors::HardFail, "tests failed") if last_commit_note.start_with?(Run::TESTS_FAILED_NOTE_PREFIX)
-        raise(Errors::HardFail, "uknown note content") unless last_commit_note.start_with?("Tests passed:")
+        raise(Errors::HardFail, "unknown note content") unless last_commit_note.start_with?("Tests passed:")
 
         "tests passed"
       end
