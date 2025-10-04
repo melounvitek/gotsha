@@ -15,7 +15,7 @@ module Gotsha
 
       wrapped = %(script -qefc #{Shellwords.escape(command)} /dev/null)
 
-      io = IO.popen(wrapped, in: File::NULL, err: [:child, :out])
+      io = IO.popen(wrapped, in: File::NULL, err: %i[child out])
       begin
         io.each do |line|
           (UserConfig.get(:verbose) || Time.now - start_time > FORCE_OUTPUT_AFTER) && puts(line)
