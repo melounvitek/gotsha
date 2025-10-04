@@ -3,7 +3,7 @@
 module Gotsha
   module Actions
     class Run
-      TESTS_FAILED_NOTE_PREFIX = "Tests failed:\n\n"
+      TESTS_FAILED_NOTE_PREFIX = "Tests failed:"
 
       def initialize
         @tests_text_outputs = []
