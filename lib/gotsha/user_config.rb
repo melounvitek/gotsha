@@ -5,7 +5,7 @@ module Gotsha
     def self.get(key)
       config = YAML.load_file(Config::CONFIG_FILE).transform_keys(&:to_sym)
 
-      config[key]
+      ENV[key.to_s.upcase] || config[key]
     rescue Errno::ENOENT
       nil
     end
