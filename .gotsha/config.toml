@@ -2,6 +2,6 @@ post_commit_tests = true
 pre_push_tests = true
 interrupt_push_on_tests_failure = false
 
-commands = {"rubocop", "rspec --order rand"]
+commands = ["rubocop", "rspec --order rand"]
 
 verbose = false
