@@ -1,0 +1,23 @@
+Tests failed:
+
+Inspecting 26 files
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33mC[0m[32m.[0m[33mC[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+Offenses:
+
+[36mlib/gotsha/actions/run.rb[0m:16:50: [33mC[0m: [33m[Correctable] [0mLayout/SpaceInsideParens: Space inside parentheses detected.
+        create_git_note!(TESTS_PASSED_NOTE_PREFIX )
+                                                 ^
+[36mlib/gotsha/actions/status.rb[0m:18:57: [33mC[0m: [33m[Correctable] [0mStyle/IfUnlessModifier: Modifier form of [33munless[0m makes the line too long.
+        raise(Errors::HardFail, "unknown note content") unless last_commit_note.start_with?(Run::TESTS_PASSED_NOTE_PREFIX)
+                                                        ^^^^^^
+
+26 files inspected, [31m2 offenses[0m detected, [33m2 offenses[0m autocorrectable
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false

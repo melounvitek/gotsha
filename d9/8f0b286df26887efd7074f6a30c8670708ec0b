@@ -1,0 +1,61 @@
+Tests failed:
+
+Randomized with seed 32106
+
+Gotsha::Actions::Init
+  init
+    first time
+[32m      creates default files and Git configuration[0m
+    second time
+[32m      creates default files and Git configuration[0m
+
+Gotsha::Actions::Show
+  show
+    when last commit test were success
+[32m      returns the result[0m
+    when last commit tests failed
+[32m      returns not verified[0m
+    when last commit was not verified
+[32m      returns not verified[0m
+
+Gotsha::BashCommand
+  .run!
+    when verbose output disabled
+[31m      returns collected stdout and successful status (FAILED - 1)[0m
+    when verbose output enabled
+^C
+RSpec is shutting down and will print the summary report... Interrupt again to force quit (warning: at_exit hooks will be skipped if you force quit).
+[31m      prints command and output, and returns the result (FAILED - 2)[0m
+
+Failures:
+
+  1) Gotsha::BashCommand.run! when verbose output disabled returns collected stdout and successful status
+     [31mFailure/Error: _, status = Process.wait2(io.pid)[0m
+     [31m[0m
+     [31m  Process received :wait2 with unexpected arguments[0m
+     [31m    expected: (123)[0m
+     [31m         got: (302614)[0m
+     [31m   Please stub a default value first if message might be received with other args as well. [0m
+     [36m# ./lib/gotsha/bash_command.rb:26:in 'Gotsha::BashCommand.run!'[0m
+     [36m# ./spec/gotsha/bash_command_spec.rb:18:in 'block (4 levels) in <top (required)>'[0m
+
+  2) Gotsha::BashCommand.run! when verbose output enabled prints command and output, and returns the result
+     [31mFailure/Error: _, status = Process.wait2(io.pid)[0m
+     [31m[0m
+     [31m  Process received :wait2 with unexpected arguments[0m
+     [31m    expected: (123)[0m
+     [31m         got: (302617)[0m
+     [31m   Please stub a default value first if message might be received with other args as well. [0m
+     [36m# ./lib/gotsha/bash_command.rb:26:in 'Gotsha::BashCommand.run!'[0m
+     [36m# ./spec/gotsha/bash_command_spec.rb:29:in 'block (5 levels) in <top (required)>'[0m
+     [36m# ./spec/gotsha/bash_command_spec.rb:30:in 'block (4 levels) in <top (required)>'[0m
+
+Finished in 0.05735 seconds (files took 0.1217 seconds to load)
+[31m7 examples, 2 failures[0m
+
+Failed examples:
+
+[31mrspec ./spec/gotsha/bash_command_spec.rb:17[0m [36m# Gotsha::BashCommand.run! when verbose output disabled returns collected stdout and successful status[0m
+[31mrspec ./spec/gotsha/bash_command_spec.rb:28[0m [36m# Gotsha::BashCommand.run! when verbose output enabled prints command and output, and returns the result[0m
+
+Randomized with seed 32106
