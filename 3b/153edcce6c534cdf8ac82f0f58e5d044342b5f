@@ -1,0 +1,23 @@
+Tests failed:
+
+Inspecting 26 files
+[33mC[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+Offenses:
+
+[36mGemfile[0m:12:5: [33mC[0m: [33m[Correctable] [0mStyle/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+gem 'toml-rb', '~> 4.0'
+    ^^^^^^^^^
+[36mGemfile[0m:12:16: [33mC[0m: [33m[Correctable] [0mStyle/StringLiterals: Prefer double-quoted strings unless you need single quotes to avoid extra backslashes for escaping.
+gem 'toml-rb', '~> 4.0'
+               ^^^^^^^^
+
+26 files inspected, [31m2 offenses[0m detected, [33m2 offenses[0m autocorrectable
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false
