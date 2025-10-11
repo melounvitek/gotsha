@@ -11,7 +11,7 @@ module Gotsha
       new.call(action_name)
     end
 
-    def call(action_name = DEFAULT_ACTION)
+    def call(action_name)
       if UserConfig.blank? && action_name.to_s != INIT_SETUP_ACTION
         raise Errors::HardFail, "config files not found, please run `bundle exec gotsha init` first"
       end
@@ -27,7 +27,7 @@ module Gotsha
         commands = Gotsha::Actions.constants.map(&:downcase).sort.join("\n")
 
         raise Errors::HardFail,
-              "unknown command `#{action_name}`, available commands: \n\n#{commands}"
+          "unknown command `#{action_name}`. #{Actions::Help.new.call}"
       end
 
       action.new.call
