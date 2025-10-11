@@ -2,7 +2,7 @@
 
 module Gotsha
   module Actions
-    class Run
+    class Test
       TESTS_PASSED_NOTE_PREFIX = "Tests passed:"
       TESTS_FAILED_NOTE_PREFIX = "Tests failed:"
 

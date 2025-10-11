@@ -10,7 +10,7 @@ module Gotsha
 
         gotsha_result = command.text_output
 
-        raise(Errors::HardFail, gotsha_result) if gotsha_result.start_with?(Run::TESTS_FAILED_NOTE_PREFIX)
+        raise(Errors::HardFail, gotsha_result) if gotsha_result.start_with?(Test::TESTS_FAILED_NOTE_PREFIX)
 
         gotsha_result
       end

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe Gotsha::Actions::Run do
+RSpec.describe Gotsha::Actions::Test do
   before do
     allow($stdout).to receive(:puts)
   end
 
-  describe "run" do
+  describe "test" do
     context "without test command configured" do
       before do
         allow(Gotsha::UserConfig)

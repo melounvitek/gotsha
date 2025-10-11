@@ -6,7 +6,7 @@ module Gotsha
       def call
         BashCommand.silent_run!('git -c core.hooksPath=/dev/null commit --allow-empty -m "Run Gotsha"')
 
-        Run.new.call
+        Test.new.call
       end
     end
   end
