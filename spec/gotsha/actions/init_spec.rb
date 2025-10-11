@@ -40,7 +40,7 @@ RSpec.describe Gotsha::Actions::Init do
         expect(FileUtils).not_to receive(:mkdir_p).with(".gotsha")
 
         expect(File).not_to receive(:write).with(Gotsha::CONFIG_FILE, File.read(Gotsha::CONFIG_TEMPLATE_PATH))
-        expect(File).to receive(:write).with(Gotsha::GH_CONFIG_FILE, File.read(Gotsha::GH_CONFIG_TEMPLATE_PATH))
+        expect(File).not_to receive(:write).with(Gotsha::GH_CONFIG_FILE, File.read(Gotsha::GH_CONFIG_TEMPLATE_PATH))
 
         expect(FileUtils).to receive(:cp).with(anything, ".gotsha/hooks/pre-push")
         expect(FileUtils).to receive(:cp).with(anything, ".gotsha/hooks/post-commit")

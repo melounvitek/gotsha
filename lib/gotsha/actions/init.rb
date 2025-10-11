@@ -10,7 +10,7 @@ module Gotsha
         github_action!
         hooks!
 
-        # TODO: this needs to go!
+        # TODO: I don't like this
         Kernel.system("git config --local core.hooksPath .gotsha/hooks")
 
         "done"
