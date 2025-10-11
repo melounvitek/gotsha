@@ -40,7 +40,7 @@ module Gotsha
           create_git_note!(TESTS_FAILED_NOTE_PREFIX)
           puts command_result.text_output.split("\n").last(20).join("\n")
 
-          raise fail_exception, "tests failed (run `bundle exec gotsha show` for full output)"
+          raise fail_exception, "tests failed (run `gotsha show` for full output)"
         end
       end
 

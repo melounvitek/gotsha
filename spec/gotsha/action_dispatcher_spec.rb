@@ -59,7 +59,7 @@ RSpec.describe Gotsha::ActionDispatcher do
           described_class.call
         end.to raise_exception(
           Gotsha::Errors::HardFail,
-          "config files not found, please run `bundle exec gotsha init` first"
+          "config files not found, please run `gotsha init` first"
         )
       end
     end
