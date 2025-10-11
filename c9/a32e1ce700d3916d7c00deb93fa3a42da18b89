@@ -1,0 +1,20 @@
+Tests failed:
+
+Inspecting 28 files
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33mC[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+Offenses:
+
+[36mlib/gotsha/action_dispatcher.rb[0m:33:97: [33mC[0m: [33m[Correctable] [0mStyle/IfUnlessModifier: Modifier form of [33munless[0m makes the line too long.
+      raise(Errors::HardFail, "Git hooks not configured, please run `bundle exec gotsha init`") unless hooks_dir == Config::HOOKS_DIR
+                                                                                                ^^^^^^
+
+28 files inspected, [31m1 offense[0m detected, [33m1 offense[0m autocorrectable
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false
