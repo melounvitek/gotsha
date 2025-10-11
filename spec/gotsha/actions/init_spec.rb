@@ -12,6 +12,8 @@ RSpec.describe Gotsha::Actions::Init do
       end
 
       it "creates default files and Git configuration" do
+        expect(FileUtils).to receive(:mkdir_p).with(".github")
+        expect(FileUtils).to receive(:mkdir_p).with(".github/workflows")
         expect(FileUtils).to receive(:mkdir_p).with(".gotsha/hooks")
         expect(FileUtils).to receive(:mkdir_p).with(".gotsha")
 
@@ -40,7 +42,7 @@ RSpec.describe Gotsha::Actions::Init do
         expect(FileUtils).not_to receive(:mkdir_p).with(".gotsha")
 
         expect(File).not_to receive(:write).with(Gotsha::CONFIG_FILE, File.read(Gotsha::CONFIG_TEMPLATE_PATH))
-        expect(File).to receive(:write).with(Gotsha::GH_CONFIG_FILE, File.read(Gotsha::GH_CONFIG_TEMPLATE_PATH))
+        expect(File).not_to receive(:write).with(Gotsha::GH_CONFIG_FILE, File.read(Gotsha::GH_CONFIG_TEMPLATE_PATH))
 
         expect(FileUtils).to receive(:cp).with(anything, ".gotsha/hooks/pre-push")
         expect(FileUtils).to receive(:cp).with(anything, ".gotsha/hooks/post-commit")
