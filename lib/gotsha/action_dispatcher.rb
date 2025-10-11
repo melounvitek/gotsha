@@ -24,10 +24,7 @@ module Gotsha
       begin
         action = Kernel.const_get("Gotsha::Actions::#{action_name.capitalize}")
       rescue NameError
-        commands = Gotsha::Actions.constants.map(&:downcase).sort.join("\n")
-
-        raise Errors::HardFail,
-          "unknown command `#{action_name}`. #{Actions::Help.new.call}"
+        raise Errors::HardFail, "unknown command `#{action_name}`. #{Actions::Help.new.call}"
       end
 
       action.new.call
