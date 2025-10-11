@@ -35,6 +35,8 @@ module Gotsha
       end
 
       def hooks!
+        return if File.exist?("#{Config::HOOKS_DIR}/post-commit") && File.exist?("#{Config::HOOKS_DIR}/pre-push")
+
         FileUtils.mkdir_p(Config::HOOKS_DIR)
 
         %w[post-commit pre-push].each do |hook|
