@@ -1,0 +1,46 @@
+# If you want to create Github Action, copy this file into `.github` folder
+# For example: `[PROJECT_ROOT]/.github/workflows/gotsha.yml`
+name: Gotsha
+
+on:
+  pull_request:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Fetch Gotsha notes
+        run: git fetch origin 'refs/notes/gotsha:refs/notes/gotsha'
+
+      - name: Show tests output
+        run: |
+          SHA="${{ github.event.pull_request.head.sha }}"
+          if git --no-pager notes --ref=gotsha show "$SHA" >/dev/null 2>&1; then
+            git --no-pager notes --ref=gotsha show "$SHA"
+          else
+            echo "No gotsha note found for $SHA"
+          fi
+
+      - name: Verify
+        run: |
+          SHA="${{ github.event.pull_request.head.sha }}"
+          NOTE="$(git --no-pager notes --ref=gotsha show "$SHA" 2>/dev/null || true)"
+
+          if [ -z "$NOTE" ]; then
+          echo "::error ::Gotsha: not verified yet. Run 'gotsha commit' to verify."
+            exit 1
+          elif [[ "$NOTE" == Tests\ failed:* ]]; then
+          git --no-pager notes --ref=gotsha show "$SHA"
+          echo "::error ::Gotsha: Tests failed"
+            exit 1
+          elif [[ "$NOTE" == Tests\ passed:* ]]; then
+          echo "✓ Gotsha: tests passed"
+          else
+            echo "::error ::Unrecognized Gotsha note format for $SHA"
+            exit 1
+          fi
