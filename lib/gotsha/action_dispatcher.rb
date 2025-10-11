@@ -15,6 +15,7 @@ module Gotsha
       @action_name = action_name
 
       verify_configuration!
+
       action_class.new.call
     end
 
