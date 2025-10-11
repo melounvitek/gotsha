@@ -2,8 +2,8 @@
 
 RSpec.describe Gotsha::ActionDispatcher do
   describe "without any action name" do
-    it "calls Run action" do
-      expect_any_instance_of(Gotsha::Actions::Run).to receive(:call)
+    it "calls Help action" do
+      expect_any_instance_of(Gotsha::Actions::Help).to receive(:call)
 
       described_class.call
     end

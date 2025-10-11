@@ -3,7 +3,7 @@
 module Gotsha
   class ActionDispatcher
     INIT_SETUP_ACTION = "init"
-    DEFAULT_ACTION = "run"
+    DEFAULT_ACTION = "help"
 
     def self.call(action_name = DEFAULT_ACTION)
       action_name ||= DEFAULT_ACTION
