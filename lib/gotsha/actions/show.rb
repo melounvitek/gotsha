@@ -10,9 +10,7 @@ module Gotsha
 
         gotsha_result = command.text_output
 
-        if gotsha_result.start_with?(Run::TESTS_FAILED_NOTE_PREFIX.delete("^a-zA-Z0-9 "))
-          raise(Errors::HardFail, gotsha_result)
-        end
+        raise(Errors::HardFail, gotsha_result) if gotsha_result.start_with?(Run::TESTS_FAILED_NOTE_PREFIX)
 
         gotsha_result
       end
