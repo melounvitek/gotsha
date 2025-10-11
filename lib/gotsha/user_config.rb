@@ -3,7 +3,7 @@
 module Gotsha
   class UserConfig
     def self.get(key)
-      config = YAML.load_file(Config::CONFIG_FILE).transform_keys(&:to_sym)
+      config = TomlRB.load_file(Config::CONFIG_FILE).transform_keys(&:to_sym)
 
       ENV[key.to_s.upcase] || config[key]
     rescue Errno::ENOENT
@@ -11,9 +11,7 @@ module Gotsha
     end
 
     def self.blank?
-      config = YAML.load_file(Config::CONFIG_FILE).transform_keys(&:to_sym)
-
-      config.empty?
+      TomlRB.load_file(Config::CONFIG_FILE).empty?
     rescue Errno::ENOENT
       true
     end
