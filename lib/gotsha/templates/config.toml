@@ -28,7 +28,7 @@ commands = [
 # you can create sign-off commit manually by this command:
 #
 # ```
-#   bundle exec gotsha commmit
+#   gotsha commmit
 # ```
 #
 post_commit_tests = false # run tests for every commit
