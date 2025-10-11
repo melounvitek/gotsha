@@ -19,7 +19,7 @@ Gem::Specification.new do |spec|
   spec.metadata["source_code_uri"] = "https://github.com/melounvitek/gotsha"
   spec.metadata["changelog_uri"] = "https://github.com/melounvitek/gotsha"
 
-  spec.add_dependency "toml-rb", "~> 4.0"
+  spec.add_dependency "toml-rb"
 
   gemspec = File.basename(__FILE__)
   spec.files = IO.popen(%w[git ls-files -z], chdir: __dir__, err: IO::NULL) do |ls|
