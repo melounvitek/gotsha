@@ -6,7 +6,7 @@ module Gotsha
       def call
         puts "Removing config files..."
 
-        FileUtils.rmdir(Config::CONFIG_DIR)
+        FileUtils.rm_rf(Config::CONFIG_DIR)
         FileUtils.rm(Config::GH_CONFIG_FILE)
 
         puts "Unsetting Git hooks path..."
