@@ -1,5 +1,3 @@
-# If you want to create Github Action, copy this file into `.github` folder
-# For example: `[PROJECT_ROOT]/.github/workflows/gotsha.yml`
 name: Gotsha
 
 on:
