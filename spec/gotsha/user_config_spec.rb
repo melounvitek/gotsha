@@ -18,7 +18,7 @@ RSpec.describe Gotsha::UserConfig do
     end
 
     before do
-      allow(YAML)
+      allow(TomlRB)
         .to receive(:load_file)
         .with(Gotsha::Config::CONFIG_FILE)
         .and_return(config_content)

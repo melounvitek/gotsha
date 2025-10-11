@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "fileutils"
-require "yaml"
+require "toml-rb"
 
 require_relative "gotsha/action_dispatcher"
 require_relative "gotsha/actions/commit"

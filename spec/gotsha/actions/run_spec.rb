@@ -19,7 +19,7 @@ RSpec.describe Gotsha::Actions::Run do
           described_class.new.call
         end.to raise_exception(
           Gotsha::Errors::HardFail,
-          "please, define some test commands in `.gotsha/config.yml`"
+          "please, define some test commands in `.gotsha/config.toml`"
         )
       end
     end
