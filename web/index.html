@@ -99,38 +99,37 @@
         <h1 id="hero-title">Sign-off your commits locally — and let others see it.</h1>
         <p>Run tests & linters on your machine, store results as Git notes, and let your PR show your tests output. Quickly and automatically.</p>
         <div class="actions">
-          <a class="btn primary" href="https://github.com/melounvitek/gotsha" target="_blank">View more details on Github</a>
+          <a class="btn primary" href="https://github.com/melounvitek/gotsha" target="_blank">More details on Github</a>
           <a class="btn secondary" href="https://github.com/melounvitek/gotsha/pull/35" target="_blank">Demo pull request</a>
         </div>
       </section>
 
-      <section class="grid">
-        <article class="card">
+      <section class="card" id="install" aria-labelledby="install-title">
+        <h2 id="install-title">Install</h3>
+        <pre><code>gem install gotsha
+
+# Or add to your Gemfile
+gem 'gotsha'</code></pre>
+          <p>Then just run <code>gotsha</code> command and follow the prompts — Gotsha will guide you through the setup. It won't take more than 3 minutes!</p>
+      </section>
+
+      <section class="card">
+          <h2>How does it work?</h2>
+        <article>
           <h3>1) Runs locally</h3>
           <p>Gotsha runs the project test suite on your machine. This can happen automatically (for every Git commit or push), or manually; right before you ask for review. You can easily configure it whatever way suits your project best.</p>
         </article>
-        <article class="card">
+        <article>
           <h3>2) Stores test results for commit SHA</h3>
           <p>Test results from every run are attached as <em>Git notes</em> for the recent commit SHA. (Got-SHA... you get it, right?)</p>
         </article>
-        <article class="card">
+        <article>
           <h3>3) Displays results in your GitHub PR</h3>
           <p>Push as usual — the note follows your commit, and tiny Github Action instantly verifies it
               and makes the tests result visible to reviewers. <a target="_blank" href="https://gotsha.org/failed_build.png">Check it out</a>; it even persist all the colors!</p>
         </article>
       </section>
 
-          <!--
-      <section class="card" id="install" aria-labelledby="install-title">
-        <h3 id="install-title">Install</h3>
-          <p>Install</p>
-        <pre><code># RubyGems
-gem install gotsha
-
-# Or add to your Gemfile
-gem 'gotsha'</code></pre>
-      </section>
-          -->
 
       <p class="foot">
           © <span id="y"></span> <a target="_blank" href="https://x.com/melounvitek">Vítek Meloun</a> (<a target="_blank" href="mailto:vitek@meloun.info">vitek@meloun.info</a>)
