@@ -3,7 +3,7 @@ Pushing untested commits? Gotsha!
 
 ## Installation
 ```bash
-gem install gotsha # or add `gem "gotsha"` to you Gemfile
+gem install gotsha # or add `gem "gotsha"` to you Gemfile and run `bundle install`
 
 gotsha
 ```
