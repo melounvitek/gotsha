@@ -10,9 +10,9 @@ begin
   puts("\n✓ Gotsha: #{message}\n\n")
   exit 0
 rescue Gotsha::Errors::SoftFail => e
-  puts "✗ Gotsha: #{e.message}\n\n"
+  puts "\n✗ Gotsha: #{e.message}\n\n"
   exit 0
 rescue Gotsha::Errors::HardFail => e
-  puts "✗ Gotsha: #{e.message}\n\n"
+  puts "\n✗ Gotsha: #{e.message}\n\n"
   exit 1
 end
