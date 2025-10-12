@@ -3,18 +3,22 @@
 module Gotsha
   class UserConfig
     def self.get(key)
-      config = TomlRB.load_file(Config::CONFIG_FILE).transform_keys(&:to_sym)
+      config = new.to_h
 
       ENV["GOTSHA_#{key.to_s.upcase}"] || # this allows changing config via ENV vars
         config[key]
-    rescue Errno::ENOENT
-      nil
     end
 
     def self.blank?
-      TomlRB.load_file(Config::CONFIG_FILE).empty?
+      new.to_h.empty?
+    end
+
+    def to_h
+      TomlRB.load_file(Config::CONFIG_FILE).transform_keys(&:to_sym)
     rescue Errno::ENOENT
-      true
+      {}
+    rescue TomlRB::ParseError => e
+      raise Errors::HardFail, "Invalid config file\n\n#{e.message}"
     end
   end
 end
