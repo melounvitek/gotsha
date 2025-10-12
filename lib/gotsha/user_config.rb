@@ -18,7 +18,7 @@ module Gotsha
     rescue Errno::ENOENT
       {}
     rescue TomlRB::ParseError => e
-      raise Errors::HardFail, "Invalid config file\n\n#{e.message}"
+      raise Errors::HardFail, "Syntax error in config file\n\n#{e.message}"
     end
   end
 end
