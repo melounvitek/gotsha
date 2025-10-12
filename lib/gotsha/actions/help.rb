@@ -10,7 +10,7 @@ module Gotsha
           name = command.downcase
           description = Kernel.const_get("Gotsha::Actions::#{command}::DESCRIPTION")
 
-          "#{name}  # #{description}"
+          "#{name}   # #{description}"
         end.sort.join("\n")
 
         "Available commands: \n\n#{commands}"
