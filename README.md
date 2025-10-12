@@ -1,5 +1,13 @@
-# Gotsha — your local CI (alpha coming soon)
+# Gotsha — your local testing CI (alpha version)
 Pushing untested commits? Gotsha!
+
+## Installation
+```bash
+gem install gotsha # or add `gem "gotsha"` to you Gemfile
+
+gotsha
+```
+Then just follow the prompts — Gotsha will guide you through the setup. It won't take more than 3 minutes!
 
 ## What is it?
 Gotsha is a tiny tool that lets you “sign off” your commit locally: it runs your tests and then stores the test results with the commit SHA (hence the gem name: got-SHA). Your pull request can then be verified against that record, so reviewers know you actually ran the checks before asking for review.
