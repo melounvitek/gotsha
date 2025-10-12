@@ -3,6 +3,8 @@
 module Gotsha
   module Actions
     class Status
+      DESCRIPTION = "displays last commit tests status"
+
       def call
         last_commit_sha = BashCommand.run!("git --no-pager rev-parse HEAD").text_output
 

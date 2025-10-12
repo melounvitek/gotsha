@@ -3,6 +3,8 @@
 module Gotsha
   module Actions
     class Init
+      DESCRIPTION = "first setup"
+
       def call
         puts "Creating files..."
 

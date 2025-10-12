@@ -3,6 +3,8 @@
 module Gotsha
   module Actions
     class Show
+      DESCRIPTION = "shows last commit test results"
+
       def call
         command = BashCommand.silent_run!("git --no-pager notes --ref=gotsha show")
 
