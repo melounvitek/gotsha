@@ -3,6 +3,8 @@
 module Gotsha
   module Actions
     class Test
+      DESCRIPTION = "runs tests and stores results to last commit"
+
       TESTS_PASSED_NOTE_PREFIX = "Tests passed:"
       TESTS_FAILED_NOTE_PREFIX = "Tests failed:"
 

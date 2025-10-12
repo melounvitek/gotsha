@@ -3,6 +3,8 @@
 module Gotsha
   module Actions
     class Uninstall
+      DESCRIPTION = "removes all Gotsha files and configurations"
+
       def call
         puts "Removing config files..."
 
