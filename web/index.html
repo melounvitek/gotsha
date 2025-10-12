@@ -4,7 +4,7 @@
   <link rel="icon" href="favicon.ico" />
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gotsha — your local CI</title>
+  <title>Gotsha — your local testing CI</title>
   <meta name="description" content="Gotsha — sign off your commits locally by running tests & linters and proving it in your PR." />
   <style>
     :root{
@@ -91,13 +91,13 @@
         <!-- Checkmark integrated near 'SHA' -->
         <path class="stroke" d="M660,120 l35,35 70,-80"/>
       </svg>
-      <div class="title">Your local CI</div>
+      <div class="title">Your local testing CI</div>
     </header>
 
     <main>
       <section class="hero" aria-labelledby="hero-title">
         <h1 id="hero-title">Sign-off your commits locally — and let others see it.</h1>
-        <p>Run tests & linters on your machine, store results as Git notes, and let your PR show your tests output. Quickly and automatically.</p>
+        <p>Run tests & linters on your machine, store complete results, and let your PR show your tests output and status. Quickly and automatically.</p>
         <div class="actions">
           <a class="btn primary" href="https://github.com/melounvitek/gotsha" target="_blank">More details on Github</a>
           <a class="btn secondary" href="https://github.com/melounvitek/gotsha/pull/35" target="_blank">Demo pull request</a>
@@ -106,12 +106,17 @@
 
       <section class="card" id="install" aria-labelledby="install-title">
         <h2 id="install-title">Install</h3>
-            <h3>1) Install gem</h3>
-        <pre><code>gem install gotsha
+          <p>Gotsha is distrubuted as a Ruby gem, so you need to
+            have <strong>Ruby</strong> working in your system. Apart from that, the only
+            other dependency is <strong>Git</strong>.</p>
+            <h3>Install gem</h3>
+        <pre><code># Install manually
+gem install gotsha
 
-# Or add to your Gemfile
-gem 'gotsha'</code></pre>
-            <h3>2) Run <code>gotsha</code></h3>
+# Or via your Gemfile
+gem 'gotsha'
+bundle install</code></pre>
+            <h3>Run <code>gotsha</code></h3>
           <p>Then just run <code>gotsha</code> command and follow the prompts — Gotsha will guide you through the setup. It won't take more than 3 minutes!</p>
       </section>
 
