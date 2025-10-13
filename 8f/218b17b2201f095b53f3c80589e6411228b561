@@ -1,0 +1,34 @@
+Tests failed:
+
+Inspecting 23 files
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+23 files inspected, [32mno offenses[0m detected
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false
+
+An error occurred while loading ./spec/gotsha/actions/commit_spec.rb.
+[31mFailure/Error:[0m
+[31m  RSpec.describe Gotsha::Actions::Commmit do[0m
+[31m    describe "commit" do[0m
+[31m      it "creates a blank commit and triggers `run` on it" do[0m
+[31m        expect(Gotsha::BashCommand)[0m
+[31m          .to receive(:silent_run!)[0m
+[31m          .with("PAGER=cat GIT_PAGER=cat sh -c 'printf %s \"#{esc}\" | base64 -d | git notes --ref=gotsha add -f -F -'")[0m
+[31m  [0m
+[31m        described_class.new.call[0m
+[31m      end[0m
+[31m    end[0m
+[31m[0m
+[31mNameError:[0m
+[31m  uninitialized constant Gotsha::Actions::Commmit[0m
+[36m# ./spec/gotsha/actions/commit_spec.rb:3:in '<top (required)>'[0m
+
+Finished in 0.00007 seconds (files took 0.06669 seconds to load)
+[31m0 examples, 0 failures, 1 error occurred outside of examples[0m

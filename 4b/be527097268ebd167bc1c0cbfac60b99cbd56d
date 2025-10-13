@@ -1,0 +1,18 @@
+Tests failed:
+
+Inspecting 26 files
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33mC[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+Offenses:
+
+[36mlib/gotsha/actions/run.rb[0m:47:1: [33mC[0m: [33m[Correctable] [0mLayout/EmptyLinesAroundMethodBody: Extra empty line detected at method body beginning.
+
+26 files inspected, [31m1 offense[0m detected, [33m1 offense[0m autocorrectable
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false

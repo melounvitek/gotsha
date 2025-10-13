@@ -1,0 +1,26 @@
+Tests failed:
+
+Inspecting 28 files
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[35mW[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+Offenses:
+
+[36mlib/gotsha/action_dispatcher.rb[0m:14:5: [33mC[0m: Metrics/AbcSize: Assignment Branch Condition size for [33mcall[0m is too high. [<2, 16, 6> 17.2/17]
+    def call(action_name) [33m...[0m
+    ^^^^^^^^^^^^^^^^^^^^^
+[36mlib/gotsha/action_dispatcher.rb[0m:27:9: [35mW[0m: [33m[Correctable] [0mLint/UselessAssignment: Useless assignment to variable - [33mcommands[0m.
+        commands = Gotsha::Actions.constants.map(&:downcase).sort.join("\n")
+        ^^^^^^^^
+[36mlib/gotsha/action_dispatcher.rb[0m:30:11: [33mC[0m: [33m[Correctable] [0mLayout/ArgumentAlignment: Align the arguments of a method call if they span more than one line.
+          "unknown command `#{action_name}`. #{Actions::Help.new.call}"
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+28 files inspected, [31m3 offenses[0m detected, [33m2 offenses[0m autocorrectable
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false
