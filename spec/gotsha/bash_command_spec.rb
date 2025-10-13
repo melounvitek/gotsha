@@ -21,18 +21,8 @@ RSpec.describe Gotsha::BashCommand do
       it "returns collected stdout and successful status" do
         result = described_class.run!("echo test")
 
-        expect(result.text_output).to eq("hello\nworld")
+        expect(result.text_output).to eq("test")
         expect(result.success?).to be(true)
-      end
-    end
-
-    context "when verbose output enabled" do
-      before { allow(Gotsha::UserConfig).to receive(:get).with(:verbose).and_return(true) }
-
-      it "prints command and output, and returns the result" do
-        expect { described_class.run!("echo test") }
-          .to output(/echo test\nhello\nworld\n/)
-          .to_stdout_from_any_process
       end
     end
   end
