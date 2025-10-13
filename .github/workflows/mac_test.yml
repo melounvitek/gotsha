@@ -1,0 +1,28 @@
+# .github/workflows/macos.yml
+name: macOS Ruby CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        ruby: ['3.3', '3.2']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+          bundler-cache: true
+
+      - name: Build & smoke-test the gem
+        run: |
+          gem install gotsha
+          gotsha
+          gitsha init
+          gotsha
+
