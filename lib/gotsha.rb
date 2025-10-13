@@ -5,6 +5,7 @@ require "toml-rb"
 
 require_relative "gotsha/action_dispatcher"
 require_relative "gotsha/actions/commit"
+require_relative "gotsha/actions/configure"
 require_relative "gotsha/actions/help"
 require_relative "gotsha/actions/init"
 require_relative "gotsha/actions/show"
