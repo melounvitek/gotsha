@@ -6,7 +6,7 @@ module Gotsha
       DESCRIPTION = "opens Gotsha config file"
 
       def call
-        binding.irb
+        raise Errors::HardFail, "please, set ENV variable `EDITOR` first"
       end
     end
   end
