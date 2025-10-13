@@ -27,7 +27,7 @@ RSpec.describe Gotsha::Actions::Configure do
       end
 
       it "issues command to open config file in the editor" do
-        expect(Kernel).to receive(:system).with("#{editor} #{Gotsha::Config::CONFIG_FILE}")
+        expect(Kernel).to receive(:system).with("#{editor} #{Gotsha::Config::CONFIG_FILE}").and_return(true)
 
         described_class.new.call
       end
