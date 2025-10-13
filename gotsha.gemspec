@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Vitek Meloun"]
   spec.email = ["vitek@meloun.info"]
 
-  spec.summary = "Gotsha: your local CI"
+  spec.summary = "Gotsha: your local testing CI"
   spec.homepage = "https://www.gotsha.org/"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 2.6"
