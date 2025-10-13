@@ -11,6 +11,8 @@ module Gotsha
         raise(Errors::HardFail, "please, set ENV variable `EDITOR` first") unless editor
 
         Kernel.system("#{editor} #{Config::CONFIG_FILE}")
+
+        "done"
       end
     end
   end
