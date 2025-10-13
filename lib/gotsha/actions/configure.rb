@@ -10,9 +10,12 @@ module Gotsha
 
         raise(Errors::HardFail, "please, set ENV variable `EDITOR` first") unless editor
 
-        Kernel.system("#{editor} #{Config::CONFIG_FILE}")
-
-        "done"
+        if Kernel.system("#{editor} #{Config::CONFIG_FILE}")
+          "done"
+        else
+          raise Errors::HardFail,
+                "something went wrong, please check whether `#{editor}` editor (set in ENV variable `EDITOR`) works"
+        end
       end
     end
   end
