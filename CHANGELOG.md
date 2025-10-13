@@ -1,3 +1,8 @@
+## [0.2.1.0] - 2025-10-13
+
+- Better `help` output
+- New command `gotsha configure` (opens config file in ENV EDITOR)
+
 ## [0.1.1] - 2025-10-12
 
 - Some cleanup after verifying the gem is published
