@@ -26,7 +26,8 @@ module Gotsha
         return if commands.any?
 
         raise(Errors::HardFail,
-              "please, define some test commands in `.gotsha/config.toml`")
+              "please, define some test commands in `.gotsha/config.toml` " \
+              "(you can run `gotsha configure` to open it)")
       end
 
       def run_commands!
