@@ -19,9 +19,6 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - name: Install Git
-        run: brew install git
-
       - name: Build & smoke-test the gem
         run: |
           gem install gotsha
