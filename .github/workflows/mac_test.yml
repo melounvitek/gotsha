@@ -9,7 +9,7 @@ jobs:
     runs-on: macos-latest
     strategy:
       matrix:
-        ruby: ['3.3', '3.2']
+        ruby: ['3.3']
     steps:
       - uses: actions/checkout@v4
 
