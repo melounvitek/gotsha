@@ -6,7 +6,11 @@ module Gotsha
       DESCRIPTION = "opens Gotsha config file"
 
       def call
-        raise Errors::HardFail, "please, set ENV variable `EDITOR` first"
+        editor = ENV["EDITOR"]
+
+        raise(Errors::HardFail, "please, set ENV variable `EDITOR` first") unless editor
+
+        Kernel.system("#{editor} #{Config::CONFIG_FILE}")
       end
     end
   end

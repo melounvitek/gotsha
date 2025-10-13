@@ -17,5 +17,20 @@ RSpec.describe Gotsha::Actions::Configure do
         )
       end
     end
+
+    context "with ENV['EDITOR'] set to `vim`" do
+      let(:editor) { "vim" }
+
+      before do
+        allow(ENV).to receive(:[]).and_call_original
+        allow(ENV).to receive(:[]).with("EDITOR").and_return(editor)
+      end
+
+      it "issues command to open config file in the editor" do
+        expect(Kernel).to receive(:system).with("#{editor} #{Gotsha::Config::CONFIG_FILE}")
+
+        described_class.new.call
+      end
+    end
   end
 end
