@@ -29,7 +29,9 @@ commands = [
 # you can create sign-off commit manually by this command:
 #
 # ```
+#
 #   gotsha commmit
+#
 # ```
 #
 post_commit_tests = false # run tests for every commit
