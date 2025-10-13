@@ -26,7 +26,7 @@ module Gotsha
         return if commands.any?
 
         raise(Errors::HardFail,
-              "please, define some test commands in `.gotsha/config.toml` " \
+              "please, define some test commands in `#{Config::CONFIG_FILE}` " \
               "(you can run `gotsha configure` to open it)")
       end
 
