@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "pty"
-require "shellwords"
 
 module Gotsha
   class BashCommand
@@ -15,7 +14,6 @@ module Gotsha
       stdout = +""
       exit_code = nil
 
-      # ✅ allocate a real PTY, so colors and -t commands work
       PTY.spawn("bash", "-lc", "#{command}; printf \"\\n#{MARKER}%d\\n\" $?") do |r, _w, pid|
         begin
           r.each do |line|
