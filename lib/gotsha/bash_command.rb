@@ -18,6 +18,7 @@ module Gotsha
       stdout = +""
       exit_code = nil
 
+      # This block is an ugly workaround to ensure the color output is stored both on Linux and Mac
       PTY.spawn("bash", "-lc", "#{command}; printf \"\\n#{MARKER}%d\\n\" $?") do |r, _w, pid|
         r.each do |line|
           if line.start_with?(MARKER)
