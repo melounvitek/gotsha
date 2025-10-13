@@ -1,3 +1,7 @@
+## [0.2.2] - 2025-10-13
+
+- Fix to ensure everything works on Mac as well
+
 ## [0.2.1.0] - 2025-10-13
 
 - Better `help` output
