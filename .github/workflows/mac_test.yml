@@ -22,7 +22,7 @@ jobs:
       - name: Build & smoke-test the gem
         run: |
           gem install gotsha
-          gitsha init
+          gotsha init
           gotsha help
           gotsha
 
