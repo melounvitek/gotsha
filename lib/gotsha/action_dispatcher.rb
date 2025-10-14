@@ -28,8 +28,7 @@ module Gotsha
     def verify_configuration!
       return if UserConfig.get(:ci)
 
-      return if action_name.to_s == INIT_SETUP_ACTION
-      return if action_name.to_s == UNINSTALL_ACTION
+      return if [INIT_SETUP_ACTION, UNINSTALL_ACTION].include?(action_name.to_s)
 
       raise(Errors::HardFail, "config files not found, please run `gotsha init` first") if UserConfig.blank?
 
