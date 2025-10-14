@@ -49,7 +49,7 @@ module Gotsha
     def action_class
       Kernel.const_get("Gotsha::Actions::#{action_name.capitalize}")
     rescue NameError
-      raise Errors::HardFail, "unknown command `#{action_name}`. #{Actions::Help.new.call}"
+      raise Errors::HardFail, "unknown command `#{action_name}`. See available commands via `gotsha help`."
     end
   end
 end
