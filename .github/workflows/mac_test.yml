@@ -16,7 +16,6 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
-          bundler-cache: true
 
       - name: Install Git
         run: brew install git
@@ -24,11 +23,8 @@ jobs:
       - name: Build & smoke-test the gem
         run: |
           git -v
-          git init
           gem install gotsha
-          git config core.hooksPath
-          gotsha init
-          git config core.hooksPath
+          GOTSBA_CI=1 GOTSHA_VERBOSE=1 gotsha init
           GOTSHA_CI=1 GOTSHA_VERBOSE=1 gotsha help
           GOTSHA_CI=1 GOTSHA_VERBOSE=1 gotsha
 
