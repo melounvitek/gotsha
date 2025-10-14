@@ -18,7 +18,9 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
 
       - name: Install testing gems
-        run: bundle install
+        run: |
+          bundle install
+          gem install rubocop rspec
 
       - name: Init & run Gotsha
         run: |
