@@ -1,3 +1,7 @@
+## [0.2.4] - 2025-10-14
+
+- Change Github Action config to actually use the gem itself (instead of bash scripting the logic)
+
 ## [0.2.3] - 2025-10-14
 
 - Add support for running on CI (ENV var GOTSHA_CI)
