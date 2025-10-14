@@ -15,7 +15,7 @@ Gem::Specification.new do |spec|
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/melounvitek/gotsha"
-  spec.metadata["changelog_uri"] = "https://github.com/melounvitek/gotsha"
+  spec.metadata["changelog_uri"] = "https://github.com/melounvitek/gotsha/blob/master/CHANGELOG.md"
 
   spec.add_dependency "toml-rb", "~> 3.0"
 
