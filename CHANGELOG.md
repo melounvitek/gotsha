@@ -1,3 +1,8 @@
+## [0.2.3] - 2025-10-14
+
+- Add support for running on CI (ENV var GOTSHA_CI)
+- Fix changelog link
+
 ## [0.2.2] - 2025-10-13
 
 - Fix to ensure everything works on Mac as well
