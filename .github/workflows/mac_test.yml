@@ -19,8 +19,7 @@ jobs:
           bundler-cache: true
 
       - name: Install testing gems
-        run: |
-          gem install rubocop rspec
+        run: bundle install
 
       - name: Init & run Gotsha
         run: |
