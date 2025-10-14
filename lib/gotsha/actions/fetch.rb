@@ -6,7 +6,7 @@ module Gotsha
       DESCRIPTION = "fetches Gotsha test results from remote"
 
       def call
-        command = BashCommand.silent_run!("git fetch origin 'refs/notes/gotsha:refs/notes/gotsha'")
+        command = BashCommand.silent_run!("git fetch --force origin 'refs/notes/gotsha:refs/notes/gotsha'")
 
         raise(Errors::HardFail, "something went wrong") unless command.success?
 

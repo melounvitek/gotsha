@@ -7,7 +7,7 @@ RSpec.describe Gotsha::Actions::Fetch do
     it "calls the Git command to fetch notes" do
       expect(Gotsha::BashCommand)
         .to receive(:silent_run!)
-        .with("git fetch origin 'refs/notes/gotsha:refs/notes/gotsha'")
+        .with("git fetch --force origin 'refs/notes/gotsha:refs/notes/gotsha'")
         .and_return(git_command_mock)
 
       expect(described_class.new.call).to eq("fetched")
