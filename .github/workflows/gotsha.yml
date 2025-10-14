@@ -24,4 +24,4 @@ jobs:
         run: git fetch origin 'refs/notes/gotsha:refs/notes/gotsha'
 
       - name: Show tests output
-        run: gotsha show
+        run: GOTSHA_CI=1 gotsha show

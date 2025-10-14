@@ -25,6 +25,8 @@ module Gotsha
     attr_reader :action_name
 
     def verify_configuration!
+      return if UserConfig.get(:ci)
+
       return if action_name.to_s == INIT_SETUP_ACTION
 
       raise(Errors::HardFail, "config files not found, please run `gotsha init` first") if UserConfig.blank?
