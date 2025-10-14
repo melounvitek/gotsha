@@ -19,8 +19,7 @@ jobs:
 
       - name: Install testing gems
         run: |
-          bundle install
-          gem install rubocop rspec
+          gem install toml-rb rubocop rspec
 
       - name: Init & run Gotsha
         run: |
