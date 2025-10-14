@@ -1,3 +1,8 @@
+## [0.2.7] - 2025-10-14
+
+- Ensure notes fetching always works by using `--force`
+- Better text output when invalid command passed
+
 ## [0.2.6] - 2025-10-14
 
 - Make the GH action faster by avoiding `bundle install` (we need to install just the Gotsha gem)
