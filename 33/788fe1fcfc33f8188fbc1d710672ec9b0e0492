@@ -1,0 +1,293 @@
+Tests passed:
+
+/usr/local/bundle/gems/activesupport-4.2.11.3/lib/active_support/core_ext/object/duplicable.rb:111: warning: BigDecimal.new is deprecated; use BigDecimal() method instead.
+Running via Spring preloader in process 363
+
+Randomized with seed 4347
+
+SeoFriendlyCategoryFiltration::GenerateReactFilters
+  when a text filter and value passed in
+[32m    should return JSON with proper `parameters` key[0m
+  when just brand passed in
+[32m    should return JSON with proper `brandId` key[0m
+  when both bool filter and brand passed in
+[32m    should return JSON with proper `brandId` and `booleanParameters` keys[0m
+  when neither brand nor filter passed in
+[32m    should return empty JSON[0m
+  when just a boolean filter passed in
+[32m    should return JSON with proper `booleanParameters` key[0m
+
+Sporilek::Product
+[32m  returns validation errors[0m
+
+API::Incomaker::ExportReport
+  .from_yesterday
+    when type is :campaigns
+[32m      writes campaign data to the sheet with correct title[0m
+    when no data is available
+[32m      logs an error with Rollbar if no data is found[0m
+    when type is :orders
+[32m      writes order data to the sheet with correct title[0m
+    when type is :dialogs
+[32m      writes dialog data to the sheet with correct title[0m
+
+GsheetReports::ExportOrders
+  #call
+[32m    serializes the orders and writes them to the sheet[0m
+  .from_yesterday
+[32m    fetches yesterday’s orders and calls the export[0m
+  #default_sheet_writer
+[32m    returns a default sheet writer instance when no custom writer is provided[0m
+
+GET /sporilek/product_approvals
+  with product to approve without admin
+[32m    should print out "no author" text[0m
+
+ComparatorExport::CreateFeedWorker
+  #perform
+    when comparator name is something else
+[32m      does not enqueue ExportHeurekaPricesWorker[0m
+[32m      does not enqueue ExportZboziPricesWorker[0m
+    when comparator name is Zbozi.cz
+[32m      does not enqueue ExportHeurekaPricesWorker[0m
+    when comparator name is Heureka
+[32m      does not enqueue ExportZboziPricesWorker[0m
+
+Shop::FetchGoogleCustomLabelValues
+[32m  sets merchant_low_impression_stock to 0 for products not in the sheet[0m
+[32m  updates top_sell_product for matching products[0m
+[32m  clears existing top_sell_product flags[0m
+[32m  updates merchant_low_impression_stock based on sheet data[0m
+
+Admin
+  nullyfing foregeign keys in assocations after destroy
+    product change logs
+[32m      should nullify `admin_id`[0m
+    advisors
+[32m      should nullify `author_id`[0m
+    products
+[32m      should nullify `author_id`[0m
+
+SeoFriendlyCategoryFiltration::CategorySeoAttributes
+  when just bool filter passed in
+[32m    should return category name with filter[0m
+[32m    should return category description with filter[0m
+[32m    should return JSON with proper values[0m
+  when both filter and brand passed in
+[32m    should return category name with filter and brand[0m
+[32m    should return category description with filter and brand[0m
+[32m    should return JSON with proper values[0m
+  when just brand passed in
+[32m    should return JSON with proper values[0m
+[32m    should return category name with brand[0m
+[32m    should return category description with brand[0m
+  when neither brand nor filter passed in
+[32m    should return JSON with empty values[0m
+[32m    should return no category description[0m
+[32m    should return no category name[0m
+  when a text filter with value passed in
+[32m    should return JSON with proper values[0m
+[32m    should return category name with filter[0m
+[32m    should return category description with filter[0m
+
+GET /sporilek/produkty/:id/edit/
+  with product change log without `admin_id`
+[32m    should print out "no author" text[0m
+
+SEO page title
+  for category with no SEO claim set to empty string
+[32m    returns just the category name (plural) with the shop name for page title[0m
+  when using landing page URL to filter only certain brand items
+[32m    should use the brand name in page H1[0m
+[32m    should use the brand name in title[0m
+  for category with no SEO title set
+[32m    returns just the category name (plural) with the shop name for page title[0m
+[32m    returns the category name in page H1[0m
+  for category with SEO claim set
+[32m    returns structured SEO title[0m
+[32m    leaves just the category name in page H1[0m
+
+SeoFriendlyCategoryFiltration::RequestParamsParser
+  when a text filter and existing value passed in
+[32m    should return the filter value[0m
+  when just brand passed in
+    #filter_item
+[32m      should return `nil`[0m
+    #brand
+[32m      should return the brand[0m
+    #no_seo_params?
+[32m      should return `false`[0m
+  when a text filter without value passed in
+[32m    should raise argument error, saying that text filter needs a value[0m
+  when neither brand nor filter passed in
+    #to_hash
+[32m      should return hash with `nil` everywhere except category[0m
+    #filter_item
+[32m      should return `nil`[0m
+    #no_seo_params?
+[32m      should return `true`[0m
+    #brand
+[32m      should return `nil`[0m
+  when non existing brand passed in
+[32m    should raise ArgumentError[0m
+  when both brand and a boolean filter passed in
+    #filter_item
+[32m      should return the filter item`[0m
+    #no_seo_params?
+[32m      should return `false`[0m
+    #brand
+[32m      should return the brand[0m
+    #to_hash
+[32m      should return hash with proper values[0m
+  when just a boolean filter passed in
+    #filter_item
+[32m      should return the filter item`[0m
+    #no_seo_params?
+[32m      should return `false`[0m
+    #brand
+[32m      should return `nil`[0m
+
+API::Incomaker::Connection
+  #get_report(campaigns)
+[32m    sends a GET request to the correct URL and returns the parsed response[0m
+  #send_event
+[32m    logs an error with Rollbar if an exception occurs[0m
+[32m    sends a PUT request to the correct URL with the event data[0m
+  #get_report(dialogs)
+[32m    sends a GET request to the correct URL for dialogs report and returns the parsed response[0m
+  #update_contact
+[32m    sends a POST request to the correct URL with the contact data[0m
+  #get_report(orders)
+[32m    sends a GET request to the correct URL for orders report and returns the parsed response[0m
+
+Consent Mode
+  visit shop homepage
+    when user accepts analytics and marketing cookies
+[32m      issues `consent_update` event[0m
+[32m      includes the consent default script[0m
+[32m      includes the update consent script[0m
+    when user has not set consent (ie. no `cconsent` cookie)
+[32m      includes the default consent script with denied values[0m
+
+Sidekiq Cron Schedule
+[32m  verifies all classes in the schedule exist[0m
+
+GsheetReports::OrderSerializer
+  en there is no `customer` stored
+[32m    works fine and returns `false` for `registered` attribute[0m
+  with all the attributes present
+[32m    serializes the order into a hash with correct attributes[0m
+
+Finished in 2.79 seconds (files took 0.15306 seconds to load)
+[32m78 examples, 0 failures[0m
+
+Randomized with seed 4347
+
+Inspecting 32 files
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+32 files inspected, [32mno offenses[0m detected
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false
+
+Randomized with seed 12916
+
+Gotsha::Actions::Commit
+  commit
+[32m    creates a blank commit and triggers `test` on it[0m
+
+Gotsha::Actions::Uninstall
+  uninstall
+Removing config files...
+Unsetting Git hooks path...
+[32m    removes config files and Git configuration[0m
+
+Gotsha::UserConfig
+  when config file exists
+[32m    returns the content[0m
+  when the config file does not exists
+[32m    does not raise any exception[0m
+
+Gotsha::Actions::Help
+  help
+[32m    returns all actions names[0m
+
+Gotsha::Actions::Configure
+  config
+    without ENV['EDITOR'] set
+[32m      fails with proper error[0m
+    with ENV['EDITOR'] set to `vim`
+[32m      issues command to open config file in the editor[0m
+
+Gotsha::Actions::Status
+  status
+    when tests did not run (note with Git error message)
+[32m      raises HardFail error[0m
+    when tests did not run (empty note)
+[32m      raises HardFail error[0m
+    when tests ran fine
+[32m      returns success message[0m
+    when tests failed
+[32m      raises HardFail error[0m
+
+Gotsha::Actions::Show
+  show
+    when last commit was not verified
+[32m      returns not verified[0m
+    when last commit test were success
+[32m      returns the result[0m
+    when last commit tests failed
+[32m      returns not verified[0m
+
+Gotsha::Actions::Init
+  init
+    first time
+[32m      creates default files and Git configuration[0m
+    second time
+[32m      does not create any files; onle Git configuration[0m
+
+Gotsha::BashCommand
+  .silent_run!
+    when verbose output enabled
+[32m      calls `.run!` with the same command[0m
+    when verbose output disabled
+[32m      calls `.run!` with output silencing[0m
+  .run!
+    when verbose output disabled
+[32m      returns collected stdout and successful status[0m
+
+Gotsha::Actions::Test
+  test
+    without test command configured
+[32m      fails with proper error[0m
+    with a test command configured
+[32m      runs the command[0m
+
+Gotsha::ActionDispatcher
+  with unknown action name
+[32m    raises HardFail error with user friendly message[0m
+  without any action name
+[32m    calls Help action[0m
+  with a valid action
+[32m    calls the action[0m
+  with no config
+    with `init` action
+[32m      calls the action witohut exception[0m
+    with other action than `init`
+[32m      fails with proper error[0m
+  with autogenerated config
+git config core.hooksPath
+.gotsha/hooks
+
+[32m    fails with proper error[0m
+
+Finished in 0.20135 seconds (files took 0.09839 seconds to load)
+[32m27 examples, 0 failures[0m
+
+Randomized with seed 12916
