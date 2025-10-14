@@ -18,13 +18,13 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
-      - name: Install gems
+      - name: Install testing gems
         run: |
-          gem install gotsha rubocop rspec
+          gem install rubocop rspec
 
       - name: Init & run Gotsha
         run: |
-          GOTSHA_VERBOSE=1 gotsha init
-          GOTSHA_VERBOSE=1 gotsha test || true
-          GOTSHA_VERBOSE=1 gotsha show || true
+          GOTSHA_VERBOSE=1 exe/gotsha init
+          GOTSHA_VERBOSE=1 exe/gotsha test || true
+          GOTSHA_VERBOSE=1 exe/gotsha show || true
 
