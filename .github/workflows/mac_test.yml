@@ -1,0 +1,30 @@
+# .github/workflows/macos.yml
+name: MacOS smoke-test
+
+on:
+  pull_request:
+    types: [ready_for_review, synchronize]
+
+jobs:
+  test:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        ruby: ['3.3']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+
+      - name: Install testing gems
+        run: |
+          gem install toml-rb rubocop rspec
+
+      - name: Init & run Gotsha
+        run: |
+          GOTSHA_VERBOSE=1 exe/gotsha init
+          GOTSHA_VERBOSE=1 exe/gotsha test
+          GOTSHA_VERBOSE=1 exe/gotsha show
+
