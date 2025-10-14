@@ -1,3 +1,7 @@
+## [0.2.6] - 2025-10-14
+
+- Make the GH action faster by avoiding `bundle install` (we need to install just the Gotsha gem)
+
 ## [0.2.5] - 2025-10-14
 
 - Introduce `push` and `fetch` commands
