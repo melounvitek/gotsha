@@ -21,6 +21,7 @@ jobs:
       - name: Build & smoke-test the gem
         run: |
           gem install gotsha
+          GOTSHA_VERBOSE=1 gotsha init
           GOTSHA_VERBOSE=1 gotsha test
           GOTSHA_VERBOSE=1 gotsha show
 
