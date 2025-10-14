@@ -5,6 +5,7 @@ module Gotsha
     INIT_SETUP_ACTION = "init"
     DEFAULT_ACTION = "help"
     OPEN_CONFIG_ACTION = "configure"
+    UNINSTALL_ACTION = "uninstall"
 
     def self.call(action_name = DEFAULT_ACTION)
       action_name ||= DEFAULT_ACTION
@@ -27,7 +28,7 @@ module Gotsha
     def verify_configuration!
       return if UserConfig.get(:ci)
 
-      return if action_name.to_s == INIT_SETUP_ACTION
+      return if [INIT_SETUP_ACTION, UNINSTALL_ACTION].include?(action_name.to_s)
 
       raise(Errors::HardFail, "config files not found, please run `gotsha init` first") if UserConfig.blank?
 
