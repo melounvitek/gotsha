@@ -1,3 +1,7 @@
+## [0.2.5] - 2025-10-14
+
+- Introduce `push` and `fetch` commands
+
 ## [0.2.4] - 2025-10-14
 
 - Change Github Action config to actually use the gem itself (instead of bash scripting the logic)
