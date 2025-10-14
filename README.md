@@ -5,9 +5,9 @@ Pushing untested commits? Gotsha!
 ```bash
 gem install gotsha # or add `gem "gotsha"` to you Gemfile
 
-gotsha
+gotsha init
+gotsha configure # this will open the config file; it's short and very important, so please, read it :-)
 ```
-Then just follow the prompts — Gotsha will guide you through the setup. It won't take more than 3 minutes!
 
 If you got stuck somewhere, you can always use `gotsha help`.
 
