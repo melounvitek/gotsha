@@ -23,6 +23,6 @@ jobs:
       - name: Init & run Gotsha
         run: |
           GOTSHA_VERBOSE=1 exe/gotsha init
-          GOTSHA_VERBOSE=1 exe/gotsha test || true
-          GOTSHA_VERBOSE=1 exe/gotsha show || true
+          GOTSHA_VERBOSE=1 exe/gotsha test
+          GOTSHA_VERBOSE=1 exe/gotsha show
 
