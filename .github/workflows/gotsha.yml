@@ -2,7 +2,8 @@ name: Gotsha
 
 on:
   pull_request:
-    types: [ready_for_review]
+    # Uncomment line below to run Gotsha only after asked for review (ie. do not run when PR is draft)
+    # types: [ready_for_review]
 
 jobs:
   verify:
