@@ -1,3 +1,8 @@
+## [0.2.8] - 2025-10-15
+
+- Fix pre-push hook (push every time, even when disabled)
+- Use `gotsha fetch` in GH Action
+
 ## [0.2.7] - 2025-10-14
 
 - Ensure notes fetching always works by using `--force`
