@@ -20,7 +20,7 @@ jobs:
         run: gem install gotsha
 
       - name: Fetch Gotsha notes
-        run: git fetch origin 'refs/notes/gotsha:refs/notes/gotsha'
+        run: GOTSHA_CI=1 gotsha fetch
 
       - name: Show tests output
         run: GOTSHA_CI=1 gotsha show
