@@ -1,3 +1,7 @@
+## [0.2.9] - 2025-10-15
+
+- Add some commented out GT Action code to quickly show how to disable for PR drafts
+
 ## [0.2.8] - 2025-10-15
 
 - Fix pre-push hook (push every time, even when disabled)
