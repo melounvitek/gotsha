@@ -3,12 +3,14 @@
 RSpec.describe Gotsha::Actions::Help do
   describe "help" do
     context "without any argument" do
-      it "returns all actions names" do
+      it "returns all public actions names" do
         help_text = described_class.new.call
 
         action_names = Gotsha::Actions.constants.map { |a| a.to_s.downcase }
 
         action_names.each do |action_name|
+          next if described_class::INTERNAL_ACTIONS.include?(action_name.to_sym)
+
           expect(help_text).to include(action_name)
         end
       end

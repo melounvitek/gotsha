@@ -4,6 +4,7 @@ module Gotsha
   module Actions
     class Help
       DESCRIPTION = "shows available commands and some tips (has optional <COMMAND> argument)"
+      INTERNAL_ACTIONS = %i[fetch push test].freeze
 
       def call(action_name = nil)
         @action_name = action_name
@@ -24,10 +25,13 @@ module Gotsha
 
         commands = Gotsha::Actions.constants.map do |command|
           name = command.downcase
+
+          next if INTERNAL_ACTIONS.include?(name)
+
           description = Kernel.const_get("Gotsha::Actions::#{command}::DESCRIPTION")
 
           "gotsha #{name}   # #{description}"
-        end.sort.join("\n")
+        end.compact.sort.join("\n")
 
         "Available commands: \n\n#{commands}\n"
       end
