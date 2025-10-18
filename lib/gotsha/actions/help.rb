@@ -75,7 +75,7 @@ module Gotsha
           "3. Even slower (or just annoying) tests: run them manually with `gotsha commit` command, right before " \
           " asking for review. Don’t allow any autorun.",
           "* `post_commit_tests = false`",
-          "* `pre_push_tests = false`\n",
+          "* `pre_push_tests = false`\n"
         ].join("\n")
       end
 
