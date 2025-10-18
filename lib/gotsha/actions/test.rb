@@ -26,8 +26,7 @@ module Gotsha
         return if commands.any?
 
         raise(Errors::HardFail,
-              "please, define some test commands in `#{Config::CONFIG_FILE}` " \
-              "(you can run `gotsha configure` to open it)")
+              "no test commands configured, please run `gotsha configure`")
       end
 
       def run_commands!
@@ -70,7 +69,7 @@ module Gotsha
       end
 
       def commands
-        @commands ||= UserConfig.get(:commands) || []
+        @commands ||= (UserConfig.get(:commands) || []).reject(&:empty?)
       end
     end
   end

@@ -8,7 +8,7 @@ module Gotsha
       def call
         editor = ENV["EDITOR"]
 
-        unless editor
+        if editor.to_s.empty?
           raise(Errors::HardFail,
                 "could not open config file automatically, ENV " \
                 "variable `EDITOR` not set.\n\nPlease, open file" \
