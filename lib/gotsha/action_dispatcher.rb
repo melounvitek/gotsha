@@ -10,18 +10,20 @@ module Gotsha
         "-h" => "help"
       }.freeze
 
-    def self.call(action_name = DEFAULT_ACTION)
+    def self.call(action_name = DEFAULT_ACTION, args = [])
       action_name ||= DEFAULT_ACTION
 
-      new.call(action_name)
+      new.call(action_name, args)
     end
 
-    def call(action_name)
+    def call(action_name, args = [])
       @action_name = action_name
 
       verify_configuration!
 
-      action_class.new.call
+      action_class.new.call(*args)
+    rescue ArgumentError
+      raise Errors::HardFail, "`gotsha #{action_name}` does not accept additional arguments"
     end
 
     private

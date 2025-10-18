@@ -83,4 +83,13 @@ RSpec.describe Gotsha::ActionDispatcher do
       described_class.call(shortcut)
     end
   end
+
+  describe "with an extra unexpected argument" do
+    let(:action) { "commit" }
+
+    it "calls the action" do
+      expect { described_class.call(action, "extra") }
+        .to raise_exception(Gotsha::Errors::HardFail, "`gotsha #{action}` does not accept additional arguments")
+    end
+  end
 end

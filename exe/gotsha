@@ -3,10 +3,8 @@
 
 require_relative "../lib/gotsha"
 
-action = ARGV.first
-
 begin
-  message = Gotsha::ActionDispatcher.call(action)
+  message = Gotsha::ActionDispatcher.call(*ARGV)
   puts("\n✓ Gotsha: #{message}\n\n")
   exit 0
 rescue Gotsha::Errors::SoftFail => e
