@@ -73,4 +73,33 @@ RSpec.describe Gotsha::ActionDispatcher do
       end
     end
   end
+
+  describe "with help action shortcut" do
+    let(:shortcut) { "-h" }
+
+    it "calls the help action" do
+      expect_any_instance_of(Gotsha::Actions::Help).to receive(:call)
+
+      described_class.call(shortcut)
+    end
+  end
+
+  describe "with an extra unexpected argument" do
+    let(:action) { "commit" }
+
+    it "calls the action" do
+      expect { described_class.call(action, "extra") }
+        .to raise_exception(Gotsha::Errors::HardFail, "too many arguments")
+    end
+  end
+
+  describe "with a valid command followed by '-h'" do
+    let(:action) { "commit" }
+
+    it "calls `help` with the action" do
+      expect_any_instance_of(Gotsha::Actions::Help).to receive(:call).with(action)
+
+      described_class.call(action, "-h")
+    end
+  end
 end

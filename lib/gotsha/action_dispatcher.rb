@@ -4,19 +4,24 @@ module Gotsha
   class ActionDispatcher
     SKIP_CONFIG_VERIFICATION_FOR = %w[init configure uninstall].freeze
     DEFAULT_ACTION = "help"
+    HELP_ACTION_SHORTCUT = "-h"
 
-    def self.call(action_name = DEFAULT_ACTION)
+    def self.call(action_name = DEFAULT_ACTION, *args)
       action_name ||= DEFAULT_ACTION
 
-      new.call(action_name)
+      new.call(action_name, *args)
     end
 
-    def call(action_name)
+    def call(action_name, *args)
       @action_name = action_name
 
       verify_configuration!
 
-      action_class.new.call
+      action_class.new.call(*args)
+    rescue ArgumentError
+      return Actions::Help.new.call(action_name) if args == [HELP_ACTION_SHORTCUT]
+
+      raise Errors::HardFail, "too many arguments"
     end
 
     private
@@ -24,9 +29,7 @@ module Gotsha
     attr_reader :action_name
 
     def verify_configuration!
-      return if SKIP_CONFIG_VERIFICATION_FOR.include?(action_name.to_s)
-
-      return if UserConfig.get(:ci)
+      return if SKIP_CONFIG_VERIFICATION_FOR.include?(action_name.to_s) || UserConfig.get(:ci)
 
       raise(Errors::HardFail, "config files not found, please run `gotsha init` first") if UserConfig.blank?
 
@@ -44,8 +47,10 @@ module Gotsha
     end
 
     def action_class
-      Kernel.const_get("Gotsha::Actions::#{action_name.capitalize}")
+      Kernel.const_get("Gotsha::Actions::#{action_name.to_s.capitalize}")
     rescue NameError
+      return Gotsha::Actions::Help if action_name.to_s == HELP_ACTION_SHORTCUT
+
       raise Errors::HardFail, "unknown command `#{action_name}`. See available commands via `gotsha help`."
     end
   end
