@@ -5,6 +5,11 @@ module Gotsha
     SKIP_CONFIG_VERIFICATION_FOR = %w[init configure uninstall].freeze
     DEFAULT_ACTION = "help"
 
+    ACTION_SHORTCUTS =
+      {
+        "-h" => "help"
+      }.freeze
+
     def self.call(action_name = DEFAULT_ACTION)
       action_name ||= DEFAULT_ACTION
 
@@ -44,7 +49,9 @@ module Gotsha
     end
 
     def action_class
-      Kernel.const_get("Gotsha::Actions::#{action_name.capitalize}")
+      name = ACTION_SHORTCUTS.fetch(action_name.to_s, action_name.to_s)
+
+      Kernel.const_get("Gotsha::Actions::#{name.capitalize}")
     rescue NameError
       raise Errors::HardFail, "unknown command `#{action_name}`. See available commands via `gotsha help`."
     end
