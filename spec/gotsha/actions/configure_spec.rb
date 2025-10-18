@@ -13,7 +13,8 @@ RSpec.describe Gotsha::Actions::Configure do
           described_class.new.call
         end.to raise_exception(
           Gotsha::Errors::HardFail,
-          "please, set ENV variable `EDITOR` first"
+          "could not open config file automatically, ENV variable `EDITOR` not set.\n\n" \
+          "Please, open file`.gotsha/config.toml` manually."
         )
       end
     end
