@@ -89,7 +89,7 @@ RSpec.describe Gotsha::ActionDispatcher do
 
     it "calls the action" do
       expect { described_class.call(action, "extra") }
-        .to raise_exception(Gotsha::Errors::HardFail, "`gotsha #{action}` does not accept additional arguments")
+        .to raise_exception(Gotsha::Errors::HardFail, "too many arguments")
     end
   end
 end

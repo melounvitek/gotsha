@@ -6,20 +6,20 @@ module Gotsha
     DEFAULT_ACTION = "help"
     HELP_ACTION_SHORTCUT = "-h"
 
-    def self.call(action_name = DEFAULT_ACTION, args = [])
+    def self.call(action_name = DEFAULT_ACTION, *args)
       action_name ||= DEFAULT_ACTION
 
-      new.call(action_name, args)
+      new.call(action_name, *args)
     end
 
-    def call(action_name, args = [])
+    def call(action_name, *args)
       @action_name = action_name
 
       verify_configuration!
 
       action_class.new.call(*args)
     rescue ArgumentError
-      raise Errors::HardFail, "`gotsha #{action_name}` does not accept additional arguments"
+      raise Errors::HardFail, "too many arguments"
     end
 
     private
