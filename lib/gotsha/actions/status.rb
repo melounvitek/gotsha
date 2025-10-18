@@ -3,7 +3,7 @@
 module Gotsha
   module Actions
     class Status
-      DESCRIPTION = "returns last commit tests status (passed / failed / not verified)"
+      DESCRIPTION = "returns latest commit tests status (passed / failed / not verified)"
 
       def call
         last_commit_sha = BashCommand.run!("git --no-pager rev-parse HEAD").text_output

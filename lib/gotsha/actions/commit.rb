@@ -3,7 +3,7 @@
 module Gotsha
   module Actions
     class Commit
-      DESCRIPTION = "creates a dummy commit and runs tests on it (used for manual sign-off)"
+      DESCRIPTION = "runs tests on a dummy commit for manual sign-off"
 
       def call
         BashCommand.silent_run!('git -c core.hooksPath=/dev/null commit --allow-empty -m "Run Gotsha"')
