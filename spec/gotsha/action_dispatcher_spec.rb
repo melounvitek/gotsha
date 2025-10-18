@@ -74,10 +74,10 @@ RSpec.describe Gotsha::ActionDispatcher do
     end
   end
 
-  describe "with an action shortcut" do
+  describe "with help action shortcut" do
     let(:shortcut) { "-h" }
 
-    it "calls the action" do
+    it "calls the help action" do
       expect_any_instance_of(Gotsha::Actions::Help).to receive(:call)
 
       described_class.call(shortcut)
