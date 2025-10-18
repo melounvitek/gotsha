@@ -38,6 +38,8 @@ module Gotsha
         description = Kernel.const_get("Gotsha::Actions::#{@action_name.capitalize}::DESCRIPTION")
 
         "`gotsha #{@action_name}` #{description}"
+      rescue NameError
+        raise Errors::HardFail, "unknown command `#{@action_name}`"
       end
 
       def config_file

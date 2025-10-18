@@ -24,5 +24,14 @@ RSpec.describe Gotsha::Actions::Help do
         expect(help_text).to eq("help\n\n`gotsha #{action_name}` #{action_description}")
       end
     end
+
+    context "with an unknown action name passed" do
+      let(:action_name) { "rerun" }
+
+      it "raises exception with proper message" do
+        expect { described_class.new.call(action_name) }
+          .to raise_exception(Gotsha::Errors::HardFail, "unknown command `#{action_name}`")
+      end
+    end
   end
 end
