@@ -3,7 +3,7 @@
 module Gotsha
   module Actions
     class Help
-      DESCRIPTION = "shows available commands and some tips"
+      DESCRIPTION = "shows available commands and some tips (has optional <COMMAND> argument)"
 
       def call(action_name = nil)
         @action_name = action_name
