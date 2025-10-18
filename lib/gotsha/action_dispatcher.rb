@@ -2,10 +2,8 @@
 
 module Gotsha
   class ActionDispatcher
-    INIT_SETUP_ACTION = "init"
+    SKIP_CONFIG_VERIFICATION_FOR = %w[init configure uninstall].freeze
     DEFAULT_ACTION = "help"
-    OPEN_CONFIG_ACTION = "configure"
-    UNINSTALL_ACTION = "uninstall"
 
     def self.call(action_name = DEFAULT_ACTION)
       action_name ||= DEFAULT_ACTION
@@ -26,7 +24,7 @@ module Gotsha
     attr_reader :action_name
 
     def verify_configuration!
-      return if [INIT_SETUP_ACTION, UNINSTALL_ACTION, OPEN_CONFIG_ACTION].include?(action_name.to_s)
+      return if SKIP_CONFIG_VERIFICATION_FOR.include?(action_name.to_s)
 
       return if UserConfig.get(:ci)
 
