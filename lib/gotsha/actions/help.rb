@@ -17,6 +17,7 @@ module Gotsha
           commands,
           internal_command_warning,
           action_description,
+          workflows_example,
           config_file,
           contact
         ].compact.join("\n\n")
@@ -37,7 +38,7 @@ module Gotsha
           "gotsha #{name}   # #{description}"
         end.compact.sort.join("\n")
 
-        "Available commands: \n\n#{commands}\n"
+        "Available commands:\n#{commands}"
       end
 
       def action_description
@@ -57,6 +58,24 @@ module Gotsha
         INTERNAL_COMMAND_WARNING
       end
 
+      def workflows_example
+        return if @action_name
+
+        [
+          "Typical workflows (and their setting in config file):",
+          "1. Super-fast tests (few seconds): run them automatically on every commit and push",
+          "* `post_commit_tests = true`",
+          "* `pre_push_tests = true`\n",
+          "2. Slower but still fast (tens of seconds): run them automatically on every push, but not on each commit",
+          "* `post_commit_tests = false`",
+          "* `pre_push_tests = true`\n",
+          "3. Even slower (or just annoying) tests: run them manually with `gotsha commit` command, right before asking " \
+          "for review. Don’t allow any autorun.",
+          "* `post_commit_tests = false`",
+          "* `pre_push_tests = false`\n",
+        ].join("\n")
+      end
+
       def config_file
         return if @action_name
 
@@ -64,8 +83,8 @@ module Gotsha
           "Original config file:",
           "If you deleted the explaining comments config file was " \
           "generated with and something is not clear now, see the original version here: " \
-          "https://github.com/melounvitek/gotsha/blob/master/lib/gotsha/templates/config.toml\n"
-        ].join("\n\n")
+          "https://github.com/melounvitek/gotsha/blob/master/lib/gotsha/templates/config.toml"
+        ].join("\n")
       end
 
       def contact
@@ -75,7 +94,7 @@ module Gotsha
           "Contact:",
           "Is something not clear? Did you find a bug? Would you use new feature? Let's talk! \n" \
           "Freel free to email me (vitek@meloun.info), or create an issue (https://github.com/melounvitek/gotsha/issues/)"
-        ]
+        ].join("\n")
       end
     end
   end
