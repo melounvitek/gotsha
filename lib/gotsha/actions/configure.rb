@@ -8,7 +8,12 @@ module Gotsha
       def call
         editor = ENV["EDITOR"]
 
-        raise(Errors::HardFail, "please, set ENV variable `EDITOR` first") unless editor
+        unless editor
+          raise(Errors::HardFail,
+                "could not open config file automatically, ENV " \
+                "variable `EDITOR` not set.\n\nPlease, open file" \
+                "`#{Config::CONFIG_FILE}` manually.")
+        end
 
         if Kernel.system("#{editor} #{Config::CONFIG_FILE}")
           "done"
