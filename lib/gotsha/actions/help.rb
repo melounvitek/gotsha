@@ -32,7 +32,8 @@ module Gotsha
         "About:\n" \
         "Gotsha is a tiny local CI tool — it runs your tests locally, automatically stores the " \
         "results as Git notes, and shows them right in your GitHub PR. You don’t need " \
-        "to change your workflow: just use `git commit` and `git push` as usual; Gotsha takes care of the rest."
+        "to change your workflow: just use `git commit` and `git push` as usual; Gotsha takes care of the rest.\n" \
+        "https://www.gotsha.org/"
       end
 
       def commands
