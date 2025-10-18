@@ -3,7 +3,7 @@
 module Gotsha
   module Actions
     class Configure
-      DESCRIPTION = "opens Gotsha config file"
+      DESCRIPTION = "opens Gotsha config file (all the tests and hooks are configured there)"
 
       def call
         editor = ENV["EDITOR"]

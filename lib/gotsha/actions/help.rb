@@ -61,12 +61,10 @@ module Gotsha
         return if @action_name
 
         [
-          "Config file:",
-          "How and when Gotsha runs tests is configured in `#{Config::CONFIG_FILE}` file, " \
-          "so it's the most important file to check and understand! Luckily, it's brief " \
-          "and contains explaining comments. If you deleted the comments it was originally " \
-          "generated with, or you're not sure how to set it, see " \
-          "https://github.com/melounvitek/gotsha/blob/master/lib/gotsha/templates/config.toml\n"
+          "Original config file:",
+          "If you deleted the explaining comments config file was " \
+          "generated with and something is not clear now, see the original version here: " \
+          "https://github.com/melounvitek/gotsha/blob/master/lib/gotsha/templates/config.toml\n",
         ].join("\n\n")
       end
 
