@@ -7,7 +7,7 @@ module Gotsha
       INTERNAL_ACTIONS = %i[fetch push test].freeze
 
       INTERNAL_COMMAND_WARNING =
-        "[WARNING] This is an internal command; you should not need to run it, if everything works as intended"
+        "[WARNING] This is an internal command; if everything works as intended, you should not need to run it"
 
       def call(action_name = nil)
         @action_name = action_name
