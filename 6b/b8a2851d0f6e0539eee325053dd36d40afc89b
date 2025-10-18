@@ -1,0 +1,23 @@
+Tests failed:
+
+Inspecting 36 files
+[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[33mC[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m[32m.[0m
+
+Offenses:
+
+[36mlib/gotsha/actions/help.rb[0m:75:121: [33mC[0m: Layout/LineLength: Line is too long. [123/120]
+          "3. Even slower (or just annoying) tests: run them manually with `gotsha commit` command, right before asking " \
+                                                                                                                        ^^^
+[36mlib/gotsha/actions/help.rb[0m:78:41: [33mC[0m: [33m[Correctable] [0mStyle/TrailingCommaInArrayLiteral: Avoid comma after the last item of an array.
+          "* `pre_push_tests = false`\n",
+                                        ^
+
+36 files inspected, [31m2 offenses[0m detected, [33m1 offense[0m autocorrectable
+
+Tip: Based on detected gems, the following RuboCop extension libraries might be helpful:
+  * rubocop-rake (https://rubygems.org/gems/rubocop-rake)
+  * rubocop-rspec (https://rubygems.org/gems/rubocop-rspec)
+
+You can opt out of this message by adding the following to your config (see https://docs.rubocop.org/rubocop/extensions.html#extension-suggestions for more options):
+  AllCops:
+    SuggestExtensions: false
