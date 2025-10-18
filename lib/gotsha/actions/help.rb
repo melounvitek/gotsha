@@ -6,12 +6,16 @@ module Gotsha
       DESCRIPTION = "shows available commands and some tips (has optional <COMMAND> argument)"
       INTERNAL_ACTIONS = %i[fetch push test].freeze
 
+      INTERNAL_COMMAND_WARNING =
+        "[WARNING] This is an internal command; if everything works as intended, you should not need to run it"
+
       def call(action_name = nil)
         @action_name = action_name
 
         [
           "help",
           commands,
+          internal_command_warning,
           action_description,
           config_file,
           contact
@@ -44,6 +48,13 @@ module Gotsha
         "`gotsha #{@action_name}` #{description}"
       rescue NameError
         raise Errors::HardFail, "unknown command `#{@action_name}`"
+      end
+
+      def internal_command_warning
+        return unless @action_name
+        return unless INTERNAL_ACTIONS.include?(@action_name.to_sym)
+
+        INTERNAL_COMMAND_WARNING
       end
 
       def config_file
