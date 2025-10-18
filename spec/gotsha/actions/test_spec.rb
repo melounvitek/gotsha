@@ -19,8 +19,7 @@ RSpec.describe Gotsha::Actions::Test do
           described_class.new.call
         end.to raise_exception(
           Gotsha::Errors::HardFail,
-          "please, define some test commands in `.gotsha/config.toml` " \
-          "(you can run `gotsha configure` to open it)"
+          "no test commands configured, please run `gotsha configure`"
         )
       end
     end
@@ -38,8 +37,7 @@ RSpec.describe Gotsha::Actions::Test do
           described_class.new.call
         end.to raise_exception(
           Gotsha::Errors::HardFail,
-          "please, define some test commands in `.gotsha/config.toml` " \
-          "(you can run `gotsha configure` to open it)"
+          "no test commands configured, please run `gotsha configure`"
         )
       end
     end
