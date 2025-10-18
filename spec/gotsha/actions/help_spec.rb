@@ -19,7 +19,19 @@ RSpec.describe Gotsha::Actions::Help do
     context "with a valid action name passed" do
       let(:action_name) { "commit" }
 
-      it "returns all actions names" do
+      it "returns the action description" do
+        action_description = Kernel.const_get("Gotsha::Actions::#{action_name.capitalize}::DESCRIPTION")
+        help_text = described_class.new.call(action_name)
+
+        expect(help_text).to eq("help\n\n`gotsha #{action_name}` #{action_description}")
+        expect(help_text).not_to include(described_class::INTERNAL_COMMAND_WARNING)
+      end
+    end
+
+    context "with a valid internal action name passed" do
+      let(:action_name) { "commit" }
+
+      it "returns the action description" do
         action_description = Kernel.const_get("Gotsha::Actions::#{action_name.capitalize}::DESCRIPTION")
         help_text = described_class.new.call(action_name)
 
