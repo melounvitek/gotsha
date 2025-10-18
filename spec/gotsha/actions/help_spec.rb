@@ -21,7 +21,7 @@ RSpec.describe Gotsha::Actions::Help do
         action_description = Kernel.const_get("Gotsha::Actions::#{action_name.capitalize}::DESCRIPTION")
         help_text = described_class.new.call(action_name)
 
-        expect(help_text).to eq("help\n\n`gotsha #{action_name}`: #{action_description}")
+        expect(help_text).to eq("help\n\n`gotsha #{action_name}` #{action_description}")
       end
     end
   end
