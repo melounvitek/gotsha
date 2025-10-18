@@ -3,7 +3,7 @@
 module Gotsha
   module Actions
     class Configure
-      DESCRIPTION = "opens Gotsha config file"
+      DESCRIPTION = "opens Gotsha config (all your tests and their autorun conditions are configured there)"
 
       def call
         editor = ENV["EDITOR"]
