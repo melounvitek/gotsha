@@ -17,10 +17,11 @@ commands = [
   # Your first test command goes into the parentheses!
   "",
   # See some examples:
-  #  "bundle exec rspec --order rand",
   #  "bin/rails t",
-  #  "rubocop",
-  #  "docker exec -it great-app rspec"
+  #  "docker-compose exec great_app rspec"
+  #  "npm test"
+  #  "npx jest --ci"
+  #  "pytest -q"
 ]
 
 # Git hooks config
