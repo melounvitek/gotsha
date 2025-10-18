@@ -4,11 +4,7 @@ module Gotsha
   class ActionDispatcher
     SKIP_CONFIG_VERIFICATION_FOR = %w[init configure uninstall].freeze
     DEFAULT_ACTION = "help"
-
-    ACTION_SHORTCUTS =
-      {
-        "-h" => "help"
-      }.freeze
+    HELP_ACTION_SHORTCUT = "-h"
 
     def self.call(action_name = DEFAULT_ACTION, args = [])
       action_name ||= DEFAULT_ACTION
@@ -51,7 +47,7 @@ module Gotsha
     end
 
     def action_class
-      name = ACTION_SHORTCUTS.fetch(action_name.to_s, action_name.to_s)
+      name = action_name.to_s == HELP_ACTION_SHORTCUT ? "help" : action_name.to_s
 
       Kernel.const_get("Gotsha::Actions::#{name.capitalize}")
     rescue NameError
