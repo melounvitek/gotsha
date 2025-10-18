@@ -1,3 +1,9 @@
+## [0.3] - 2025-10-18
+
+- Add guide for case when `gotsha config` fails due to missing `ENV['EDITOR']`
+- Enhance help command (hide some internal commands to not confuse users, add `-h` alias for `help`, add the ability to call `gotsha help <command>` AND `gotsha <command> -h`)
+- Change wording and examples in the config file template, to make it less confising for new users
+
 ## [0.2.9] - 2025-10-15
 
 - Add some commented out GT Action code to quickly show how to disable for PR drafts
