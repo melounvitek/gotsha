@@ -29,9 +29,7 @@ module Gotsha
     attr_reader :action_name
 
     def verify_configuration!
-      return if SKIP_CONFIG_VERIFICATION_FOR.include?(action_name.to_s)
-
-      return if UserConfig.get(:ci)
+      return if SKIP_CONFIG_VERIFICATION_FOR.include?(action_name.to_s) || UserConfig.get(:ci)
 
       raise(Errors::HardFail, "config files not found, please run `gotsha init` first") if UserConfig.blank?
 
