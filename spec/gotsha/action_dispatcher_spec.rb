@@ -92,4 +92,14 @@ RSpec.describe Gotsha::ActionDispatcher do
         .to raise_exception(Gotsha::Errors::HardFail, "too many arguments")
     end
   end
+
+  describe "with a valid command followed by '-h'" do
+    let(:action) { "commit" }
+
+    it "calls `help` with the action" do
+      expect_any_instance_of(Gotsha::Actions::Help).to receive(:call).with(action)
+
+      described_class.call(action, "-h")
+    end
+  end
 end
