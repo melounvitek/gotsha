@@ -19,6 +19,8 @@ module Gotsha
 
       action_class.new.call(*args)
     rescue ArgumentError
+      return Actions::Help.new.call(action_name) if args == [HELP_ACTION_SHORTCUT]
+
       raise Errors::HardFail, "too many arguments"
     end
 
