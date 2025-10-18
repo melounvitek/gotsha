@@ -1,3 +1,7 @@
+## [1.0.1] - 2025-10-19
+
+- Fix a bug, happening on first push in a new repository.
+
 ## [1.0.0] - 2025-10-19
 
 - Polish the readme.
