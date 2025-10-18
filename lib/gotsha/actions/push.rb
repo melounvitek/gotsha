@@ -9,7 +9,9 @@ module Gotsha
         try_push = push_command
 
         unless try_push.success?
+          puts "First push detected, need to run tests one more time..."
           Fetch.new.call
+          Test.new.call
           push_command
         end
 

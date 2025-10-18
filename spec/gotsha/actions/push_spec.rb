@@ -33,6 +33,7 @@ RSpec.describe Gotsha::Actions::Push do
           .with("git push --no-verify origin refs/notes/gotsha:refs/notes/gotsha")
 
         expect_any_instance_of(Gotsha::Actions::Fetch).to receive(:call)
+        expect_any_instance_of(Gotsha::Actions::Test).to receive(:call)
         expect(described_class.new.call).to eq("pushed")
       end
     end
