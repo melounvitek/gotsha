@@ -3,7 +3,7 @@
 module Gotsha
   module Actions
     class Init
-      DESCRIPTION = "first setup"
+      DESCRIPTION = "performs the Gotsha setup (creates config files and changes Git Hooks path)"
 
       def call
         puts "Creating files..."

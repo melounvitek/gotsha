@@ -5,18 +5,23 @@ module Gotsha
     class Help
       DESCRIPTION = "shows available commands and some tips"
 
-      def call
+      def call(action_name = nil)
+        @action_name = action_name
+
         [
           "help",
           commands,
+          action_description,
           config_file,
           contact
-        ].join("\n\n")
+        ].compact.join("\n\n")
       end
 
       private
 
       def commands
+        return if @action_name
+
         commands = Gotsha::Actions.constants.map do |command|
           name = command.downcase
           description = Kernel.const_get("Gotsha::Actions::#{command}::DESCRIPTION")
@@ -27,7 +32,17 @@ module Gotsha
         "Available commands: \n\n#{commands}\n"
       end
 
+      def action_description
+        return unless @action_name
+
+        description = Kernel.const_get("Gotsha::Actions::#{@action_name.capitalize}::DESCRIPTION")
+
+        "`gotsha #{@action_name}` #{description}"
+      end
+
       def config_file
+        return if @action_name
+
         [
           "Config file:",
           "How and when Gotsha runs tests is configured in `#{Config::CONFIG_FILE}` file, " \
@@ -39,6 +54,8 @@ module Gotsha
       end
 
       def contact
+        return if @action_name
+
         [
           "Contact:",
           "Is something not clear? Did you find a bug? Would you use new feature? Let's talk! \n" \
