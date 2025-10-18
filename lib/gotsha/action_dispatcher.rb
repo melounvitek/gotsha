@@ -47,10 +47,10 @@ module Gotsha
     end
 
     def action_class
-      name = action_name.to_s == HELP_ACTION_SHORTCUT ? "help" : action_name.to_s
-
-      Kernel.const_get("Gotsha::Actions::#{name.capitalize}")
+      Kernel.const_get("Gotsha::Actions::#{action_name.to_s.capitalize}")
     rescue NameError
+      return Gotsha::Actions::Help if action_name.to_s == HELP_ACTION_SHORTCUT
+
       raise Errors::HardFail, "unknown command `#{action_name}`. See available commands via `gotsha help`."
     end
   end
