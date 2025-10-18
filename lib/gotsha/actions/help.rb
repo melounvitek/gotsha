@@ -64,7 +64,7 @@ module Gotsha
           "Original config file:",
           "If you deleted the explaining comments config file was " \
           "generated with and something is not clear now, see the original version here: " \
-          "https://github.com/melounvitek/gotsha/blob/master/lib/gotsha/templates/config.toml\n",
+          "https://github.com/melounvitek/gotsha/blob/master/lib/gotsha/templates/config.toml\n"
         ].join("\n\n")
       end
 
