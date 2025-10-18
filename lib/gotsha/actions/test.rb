@@ -70,7 +70,7 @@ module Gotsha
       end
 
       def commands
-        @commands ||= UserConfig.get(:commands) || []
+        @commands ||= (UserConfig.get(:commands) || []).reject(&:empty?)
       end
     end
   end

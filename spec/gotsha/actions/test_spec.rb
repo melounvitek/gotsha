@@ -25,6 +25,25 @@ RSpec.describe Gotsha::Actions::Test do
       end
     end
 
+    context "with only a blank (empty string) test command configured" do
+      before do
+        allow(Gotsha::UserConfig)
+          .to receive(:get)
+          .with(:commands)
+          .and_return([""])
+      end
+
+      it "fails with proper error" do
+        expect do
+          described_class.new.call
+        end.to raise_exception(
+          Gotsha::Errors::HardFail,
+          "please, define some test commands in `.gotsha/config.toml` " \
+          "(you can run `gotsha configure` to open it)"
+        )
+      end
+    end
+
     context "with a test command configured" do
       let(:test_command) { "rails t" }
       let(:test_text_response) { "all went well" }
