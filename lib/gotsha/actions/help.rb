@@ -41,7 +41,10 @@ module Gotsha
 
         description = Kernel.const_get("Gotsha::Actions::#{@action_name.capitalize}::DESCRIPTION")
 
-        "`gotsha #{@action_name}` #{description}"
+        internal_command_warning =
+          "\n\n[WARNING] This is an internal command; you should not need to run it, if everything works as intended"
+
+        "`gotsha #{@action_name}` #{description}#{internal_command_warning if INTERNAL_ACTIONS.include?(@action_name.to_sym)}"
       rescue NameError
         raise Errors::HardFail, "unknown command `#{@action_name}`"
       end
