@@ -1,3 +1,5 @@
+<img src="https://badge.fury.io/rb/gotsha.svg?icon=si%3Arubygems" />
+
 # Gotsha — your local testing CI (alpha version)
 Pushing untested commits? Gotsha!
 
