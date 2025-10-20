@@ -2,7 +2,7 @@
 
 module Gotsha
   class ActionDispatcher
-    SKIP_CONFIG_VERIFICATION_FOR = %w[init configure uninstall].freeze
+    SKIP_CONFIG_VERIFICATION_FOR = %w[init configure uninstall help].freeze
     DEFAULT_ACTION = "help"
     HELP_ACTION_SHORTCUT = "-h"
 
