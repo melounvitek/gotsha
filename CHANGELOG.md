@@ -1,3 +1,7 @@
+## [1.1.0] - 2025-10-22
+
+- Add GitLab support
+
 ## [1.0.1] - 2025-10-19
 
 - Fix a bug, happening on first push in a new repository.
