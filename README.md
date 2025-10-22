@@ -30,5 +30,7 @@ Then, you can see the tests results in a Github action:
 
 Based on your workflow and tests speed, you can configure them to auto-run on every commit, before every push, or just manually. Whenever pushing to remote repository, the Git note (which is what's used to store the test results) gets sent there as well.
 
+Both Github and GitLab are supported out of the box!
+
 ## Do you like Gotsha?
 <a href="https://buymeacoffee.com/gotsha">I like coffee!</a>
