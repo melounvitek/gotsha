@@ -1,0 +1,19 @@
+stages: [verify]
+
+verify_gotsha:
+  stage: verify
+  image: ruby:3.3
+  variables:
+    GIT_DEPTH: "0"
+    GIT_STRATEGY: fetch
+    GOTSHA_CI: "1"
+  only:
+    - merge_requests
+  before_script:
+    - ruby -v
+    - apt-get update && apt-get install -y git
+    - gem install gotsha
+  script:
+    - GOTSHA_CI=1 gotsha fetch
+    - GOTSHA_CI=1 gotsha show
+
