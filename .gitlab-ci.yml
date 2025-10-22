@@ -14,6 +14,6 @@ verify_gotsha:
     - apt-get update && apt-get install -y git
     - gem install gotsha
   script:
-    - GOTSHA_CI=1 gotsha fetch
-    - GOTSHA_CI=1 gotsha show
+    - gotsha fetch
+    - gotsha show
 
