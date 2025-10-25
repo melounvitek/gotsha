@@ -10,6 +10,7 @@ module Gotsha
 
         config_files!
         github_action!
+        gitlab_action!
         hooks!
 
         # TODO: I don't like this
@@ -34,6 +35,12 @@ module Gotsha
         FileUtils.mkdir_p(".github")
         FileUtils.mkdir_p(".github/workflows")
         File.write(Config::GH_CONFIG_FILE, File.read(Config::GH_CONFIG_TEMPLATE_PATH))
+      end
+
+      def gitlab_action!
+        return if File.exist?(Config::GL_CONFIG_FILE)
+
+        File.write(Config::GL_CONFIG_FILE, File.read(Config::GL_CONFIG_TEMPLATE_PATH))
       end
 
       def hooks!
