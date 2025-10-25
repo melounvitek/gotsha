@@ -1,4 +1,6 @@
-# Start using Gotsha in Gitlab by appending this to .gitlab-ci.yml file:
+# Start using Gotsha in GitLab by renaming this file to `gitlab-ci.yml`.
+#
+# If it already exists, append this to its end:
 #
 #include:
 #  - local: '.gitlab-ci.gotsha.yml'
