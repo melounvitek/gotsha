@@ -1,3 +1,7 @@
+## [1.1.1] - 2025-10-22
+
+- Fix a GitLab support related bug (the CI file was not created on init)
+
 ## [1.1.0] - 2025-10-22
 
 - Add GitLab support
