@@ -1,4 +1,8 @@
-## [1.1.1] - 2025-10-22
+## [1.1.2] - 2025-10-25
+
+- Add less intrusive GitLab CI config file generation (to not overwrite existing one)
+
+## [1.1.1] - 2025-10-25
 
 - Fix a GitLab support related bug (the CI file was not created on init)
 
