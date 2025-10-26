@@ -1,7 +1,7 @@
 ## [1.2.0] - 2025-10-26
 
-- Support `gotsha version` (and `-v` and `--version`)
-- `gotsha --help` is not supported too
+- Add `gotsha version` (and support `-v` and `--version`)
+- `gotsha --help` is now supported too
 - Relax the required TOML version (it does not matter that much here, and some people reported they had issues with the 3 version required)
 - Remove a leftover old GH action example
 
