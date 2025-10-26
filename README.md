@@ -1,4 +1,4 @@
-<a href="https://rubygems.org/gems/gotsha"><img src="https://badge.fury.io/rb/gotsha.svg?icon=si%3Arubygems&refresh=1" /></a>
+<a href="https://rubygems.org/gems/gotsha"><img src="https://badge.fury.io/rb/gotsha.svg?icon=si%3Arubygems&refresh=2" /></a>
 # Gotsha — your local testing CI
 Pushing untested commits? Gotsha!
 
