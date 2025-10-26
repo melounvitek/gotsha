@@ -102,4 +102,22 @@ RSpec.describe Gotsha::ActionDispatcher do
       described_class.call(action, "-h")
     end
   end
+
+  describe "with version action shortcut `-v`" do
+    let(:shortcut) { "-v" }
+
+    it "calls the version action" do
+      expect_any_instance_of(Gotsha::Actions::Version).to receive(:call)
+
+      described_class.call(shortcut)
+    end
+  end
+
+  describe "with action prepended by `--`" do
+    it "calls the version action" do
+      expect_any_instance_of(Gotsha::Actions::Version).to receive(:call)
+
+      described_class.call("--version")
+    end
+  end
 end
