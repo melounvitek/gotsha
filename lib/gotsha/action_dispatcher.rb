@@ -5,6 +5,7 @@ module Gotsha
     SKIP_CONFIG_VERIFICATION_FOR = %w[init configure uninstall].freeze
     DEFAULT_ACTION = "help"
     HELP_ACTION_SHORTCUT = "-h"
+    VERSION_ACTION_SHORTCUT = "-v"
 
     def self.call(action_name = DEFAULT_ACTION, *args)
       action_name ||= DEFAULT_ACTION
@@ -20,6 +21,7 @@ module Gotsha
       action_class.new.call(*args)
     rescue ArgumentError
       return Actions::Help.new.call(action_name) if args == [HELP_ACTION_SHORTCUT]
+      return Actions::Help.new.call(action_name) if args == ["--help"]
 
       raise Errors::HardFail, "too many arguments"
     end
@@ -47,9 +49,12 @@ module Gotsha
     end
 
     def action_class
-      Kernel.const_get("Gotsha::Actions::#{action_name.to_s.capitalize}")
+      class_name = action_name.to_s.delete_prefix("--").capitalize
+
+      Kernel.const_get("Gotsha::Actions::#{class_name}")
     rescue NameError
       return Gotsha::Actions::Help if action_name.to_s == HELP_ACTION_SHORTCUT
+      return Actions::Version if action_name.to_s == VERSION_ACTION_SHORTCUT
 
       raise Errors::HardFail, "unknown command `#{action_name}`. See available commands via `gotsha help`."
     end
