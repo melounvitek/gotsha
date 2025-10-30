@@ -3,10 +3,12 @@ name: MacOS smoke-test
 
 on:
   pull_request:
-    types: [ready_for_review]
+    types: [opened, ready_for_review, synchronize]
 
 jobs:
   test:
+    if: github.event.action == 'ready_for_review' || (github.event.action == 'synchronize' && !github.event.pull_request.draft)
+
     runs-on: macos-latest
     strategy:
       matrix:
