@@ -6,22 +6,9 @@ module Gotsha
       DESCRIPTION = "pushes Gotsha test results to remote"
 
       def call
-        try_push = push_command
-
-        unless try_push.success?
-          puts "First push detected, need to run tests one more time..."
-          Fetch.new.call
-          Test.new.call
-          push_command
-        end
+        BashCommand.silent_run!("git push --no-verify --force origin refs/notes/gotsha:refs/notes/gotsha")
 
         "pushed"
-      end
-
-      private
-
-      def push_command
-        BashCommand.silent_run!("git push --no-verify origin refs/notes/gotsha:refs/notes/gotsha")
       end
     end
   end
