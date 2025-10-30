@@ -2,11 +2,12 @@ name: Gotsha
 
 on:
   pull_request:
-    # Uncomment line below to run Gotsha only after asked for review (ie. do not run when PR is draft)
-    # types: [ready_for_review]
+    types: [opened, ready_for_review, synchronize]
 
 jobs:
   verify:
+    #if: github.event.action == 'ready_for_review' || (github.event.action == 'synchronize' && !github.event.pull_request.draft)
+
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
