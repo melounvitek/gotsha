@@ -1,3 +1,8 @@
+## [1.2.1] - 2025-10-30
+
+- Enhance pre-generated Github Action and GitLab CI configs
+- Always force push Git notes (clear history is not an objective here; we just need a reliable way for the most recent commit notes to get there every time, and since we also use force in fetching, this is an OK approach)
+
 ## [1.2.0] - 2025-10-26
 
 - Add `gotsha version` (and support `-v` and `--version`)
