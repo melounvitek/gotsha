@@ -1,3 +1,7 @@
+## [1.2.2] - 2026-01-03
+
+- Fix a bug: hooks did not ignore commented-out settings from config file. They do now.
+
 ## [1.2.1] - 2025-10-30
 
 - Enhance pre-generated Github Action and GitLab CI configs
