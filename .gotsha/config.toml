@@ -1,4 +1,4 @@
-post_commit_tests = true
+#    post_commit_tests = true
 pre_push_tests = true
 interrupt_push_on_tests_failure = false
 
