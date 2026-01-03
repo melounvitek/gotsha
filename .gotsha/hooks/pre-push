@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-grep -qE 'pre_push_tests\s*=\s*true' .gotsha/config.toml && (exe/gotsha status || exe/gotsha test)
+grep -qE '^[^#]*pre_push_tests\s*=\s*true' .gotsha/config.toml && (exe/gotsha status || exe/gotsha test)
 exe/gotsha push

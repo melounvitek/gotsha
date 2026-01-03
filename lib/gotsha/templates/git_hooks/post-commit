@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-grep -qE 'post_commit_tests\s*=\s*true' .gotsha/config.toml || exit 0
+grep -qE '^[^#]*post_commit_tests\s*=\s*true' .gotsha/config.toml || exit 0
 
 gotsha test
 
