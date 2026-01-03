@@ -4,7 +4,8 @@ interrupt_push_on_tests_failure = false
 
 commands = [
   "rubocop",
-  "rspec --order rand"
+  "rspec --order rand",
+  "fuck"
 ]
 
 verbose = false
