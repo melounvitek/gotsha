@@ -8,7 +8,7 @@ module Gotsha
       def call
         command = BashCommand.silent_run!("git fetch --force #{remote} 'refs/notes/gotsha:refs/notes/gotsha'")
 
-        raise(Errors::HardFail, "something went wrong") unless command.success?
+        raise(Errors::HardFail, "something went wrong") unless command.success? || missing_notes_ref?(command)
 
         "fetched"
       end
@@ -26,6 +26,10 @@ module Gotsha
         return branch_remote unless branch_remote.empty?
 
         "origin"
+      end
+
+      def missing_notes_ref?(command)
+        command.text_output.include?("couldn't find remote ref refs/notes/gotsha")
       end
     end
   end
