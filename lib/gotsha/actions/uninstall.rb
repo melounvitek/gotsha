@@ -10,6 +10,7 @@ module Gotsha
 
         File.exist?(Config::CONFIG_DIR) && FileUtils.rm_rf(Config::CONFIG_DIR)
         File.exist?(Config::GH_CONFIG_FILE) && FileUtils.rm(Config::GH_CONFIG_FILE)
+        File.exist?(Config::GL_CONFIG_FILE) && FileUtils.rm(Config::GL_CONFIG_FILE)
 
         puts "Unsetting Git hooks path..."
         BashCommand.silent_run!("git config --unset core.hooksPath")
