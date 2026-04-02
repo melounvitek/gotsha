@@ -16,13 +16,13 @@ module Gotsha
     def call(action_name, *args)
       @action_name = action_name
 
+      return Actions::Help.new.call(action_name) if args == [HELP_ACTION_SHORTCUT]
+      return Actions::Help.new.call(action_name) if args == ["--help"]
+
       verify_configuration!
 
       action_class.new.call(*args)
     rescue ArgumentError
-      return Actions::Help.new.call(action_name) if args == [HELP_ACTION_SHORTCUT]
-      return Actions::Help.new.call(action_name) if args == ["--help"]
-
       raise Errors::HardFail, "too many arguments"
     end
 

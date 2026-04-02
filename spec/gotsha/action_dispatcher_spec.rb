@@ -113,6 +113,22 @@ RSpec.describe Gotsha::ActionDispatcher do
         described_class.call("--help")
       end
     end
+
+    context "with a valid command followed by `-h`" do
+      it "calls the help action without exception" do
+        expect_any_instance_of(Gotsha::Actions::Help).to receive(:call).with("commit")
+
+        described_class.call("commit", "-h")
+      end
+    end
+
+    context "with a valid command followed by `--help`" do
+      it "calls the help action without exception" do
+        expect_any_instance_of(Gotsha::Actions::Help).to receive(:call).with("commit")
+
+        described_class.call("commit", "--help")
+      end
+    end
   end
 
   describe "with help action shortcut" do
