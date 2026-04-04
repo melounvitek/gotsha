@@ -18,6 +18,7 @@ require_relative "gotsha/actions/version"
 require_relative "gotsha/bash_command"
 require_relative "gotsha/config"
 require_relative "gotsha/errors"
+require_relative "gotsha/remote_resolver"
 require_relative "gotsha/user_config"
 require_relative "gotsha/version"
 
