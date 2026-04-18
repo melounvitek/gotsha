@@ -1,3 +1,7 @@
+## [1.2.3] - 2026-04-18
+
+- Fix small bugs (security and Git integration).
+
 ## [1.2.2] - 2026-01-03
 
 - Fix a bug: hooks did not ignore commented-out settings from config file. They do now.
