@@ -1,3 +1,6 @@
+## [1.2.4] - 2026-04-18
+
+- Squash a bug in Ruby loading, happening in Mac with Mise
 ## [1.2.3] - 2026-04-18
 
 - Fix small bugs (security and Git integration).
