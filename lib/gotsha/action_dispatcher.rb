@@ -2,7 +2,7 @@
 
 module Gotsha
   class ActionDispatcher
-    SKIP_CONFIG_VERIFICATION_FOR = %w[init configure uninstall].freeze
+    SKIP_CONFIG_VERIFICATION_FOR = %w[init configure uninstall help -h --help].freeze
     DEFAULT_ACTION = "help"
     HELP_ACTION_SHORTCUT = "-h"
     VERSION_ACTION_SHORTCUT = "-v"
@@ -16,13 +16,13 @@ module Gotsha
     def call(action_name, *args)
       @action_name = action_name
 
+      return Actions::Help.new.call(action_name) if args == [HELP_ACTION_SHORTCUT]
+      return Actions::Help.new.call(action_name) if args == ["--help"]
+
       verify_configuration!
 
       action_class.new.call(*args)
     rescue ArgumentError
-      return Actions::Help.new.call(action_name) if args == [HELP_ACTION_SHORTCUT]
-      return Actions::Help.new.call(action_name) if args == ["--help"]
-
       raise Errors::HardFail, "too many arguments"
     end
 

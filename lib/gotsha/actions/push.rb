@@ -6,7 +6,8 @@ module Gotsha
       DESCRIPTION = "pushes Gotsha test results to remote"
 
       def call
-        command = BashCommand.silent_run!("git push --no-verify --force origin refs/notes/gotsha:refs/notes/gotsha")
+        remote = RemoteResolver.resolve
+        command = BashCommand.silent_run!("git push --no-verify --force #{remote} refs/notes/gotsha:refs/notes/gotsha")
 
         raise(Errors::HardFail, "something went wrong") unless command.success?
 
